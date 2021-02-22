@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<title>Services</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.menu {
+  display: none;
+}
+
+footer {
+  height: 110px;;
+  padding-top: 15px;
+  text-align: center;
+  background-color: DarkSalmon;
+  color: white;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: auto; 
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+</style>
+<body style="overflow:auto;">
+
+<h6><div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s2">
+      <a href="home.html" class="w3-button w3-block w3-black w3-mobile">Home</a>
+    </div>
+    <div class="w3-col s2">
+      <a href="services.html" class="w3-button w3-block w3-black w3-mobile">Services</a>
+    </div>
+	<div class="w3-col s4">
+      <a href="appointment.html" class="w3-button w3-block w3-black w3-mobile">Book Appointment</a>
+    </div>
+    <div class="w3-col s2">
+      <a href="contactus.html" class="w3-button w3-block w3-black w3-mobile">Contact Us</a>
+    </div>
+	<div class="w3-col s2">
+		<div class="dropdown">
+		  <button class="dropbtn w3-button w3-block w3-black w3-mobile">Login</button>
+			<div class="dropdown-content">
+				<a href="login.html">Customer</a>
+				<a href="employeelogin.html">Employee</a>
+				<a href="adminlogin.html">Admin</a>
+			</div>
+		</div>
+    </div>
+  </div>
+</div></h6>
+
+<!-- Menu Container -->
+<div class="w3-container" id="services" style="background-image: url('background.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100%, 100%; background-position: center;">
+  <div class="w3-content" style="max-width:700px">
+ &nbsp;
+    <h5 class="w3-center w3-padding-48" style="font-family: myFirstFont;"><span class="w3-tag w3-wide">Services</span></h5>
+  
+    <h5><div class="w3-row w3-center w3-card w3-padding" style="background-color:#dedede;">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Hair');" id="myLink">
+        <div class="w3-col s4 tablink" style="color:Red;">Hair Services</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Wax');">
+        <div class="w3-col s4 tablink" style="color:Red;">Waxing</div>
+      </a>
+	  <a href="javascript:void(0)" onclick="openMenu(event, 'Nails');">
+        <div class="w3-col s4 tablink" style="color:Red;">Nail Services</div>
+      </a>
+	  <br>
+	  <hr style="background-color:darkred;height:2px;">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Colors');">
+        <div class="w3-col s4 tablink" style="color:Red;">Color Services</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Retexturizers');">
+        <div class="w3-col s4 tablink" style="color:Red;">Retexturizers</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Other');">
+        <div class="w3-col s4 tablink" style="color:Red;">Other Services</div>
+      </a>
+    </div></h5>
+
+    <div id="Hair" class="w3-container services w3-padding-48 w3-card" style="background-color:#dedede;">
+      <h5>Women’s Cut &amp; Style  <div style="text-align:right;display:inline-block;width:490px">$35-$43</div></h5><hr style="border: 1px dotted red;">
+		<h5>Men’s Cut &amp; Style  <div style="text-align:right;display:inline-block;width:516px">$25-$30</div></h5><hr style="border: 1px dotted red;">
+		<h5>Children up to age 11  <div style="text-align:right;display:inline-block;width:486px">$12</div></h5><hr style="border: 1px dotted red;">
+		<h5>Bang Trim  <div style="text-align:right;display:inline-block;width:579px">$10</div></h5><hr style="border: 1px dotted red;">
+		<h5>Shampoo &amp; Blow Dry  <div style="text-align:right;display:inline-block;width:487px">$20-$25</div></h5><hr style="border: 1px dotted red;">
+		<h5>Updo  <div style="text-align:right;display:inline-block;width:614px">$60 &amp; up</div></h5><hr style="border: 1px dotted red;">
+		<h5>Children ages  <div style="text-align:right;display:inline-block;width:550px">$11-$18 Depends on each cut</div></h5>
+    </div>
+
+    <div id="Wax" class="w3-container services w3-padding-48 w3-card" style="background-color:#dedede;">
+		<h5>Eyebrows <div style="text-align:right;display:inline-block;width:581px">$16</div></h5><hr style="border: 1px dotted red;">
+		<h5>Lip <div style="text-align:right;display:inline-block;width:633px">$12</div></h5><hr style="border: 1px dotted red;">
+		<h5>Chin <div style="text-align:right;display:inline-block;width:621px">$25</div></h5><hr style="border: 1px dotted red;">
+		<h5>Bikini <div style="text-align:right;display:inline-block;width:614px">$40</div></h5>
+    </div>  
+    
+	<div id="Nails" class="w3-container services w3-padding-48 w3-card" style="background-color:#dedede;">
+		<h5>Manicure <div style="text-align:right;display:inline-block;width:581px">$24</div></h5><hr style="border: 1px dotted red;">
+		<h5>French Manicure <div style="text-align:right;display:inline-block;width:523px">$27</div></h5><hr style="border: 1px dotted red;">
+		<h5>French Tip Wrap <div style="text-align:right;display:inline-block;width:524px">$29</div></h5><hr style="border: 1px dotted red;">
+		<h5>Gel Manicure <div style="text-align:right;display:inline-block;width:550px">$34</div></h5><hr style="border: 1px dotted red;">
+		<h5>French Gel Manicure <div style="text-align:right;display:inline-block;width:491px">$37</div></h5><hr style="border: 1px dotted red;">
+		<h5>Polish Change Nails <div style="text-align:right;display:inline-block;width:498px">$13</div></h5><hr style="border: 1px dotted red;">
+		<h5>Acrylic Full Set <div style="text-align:right;display:inline-block;width:540px">$42</div></h5><hr style="border: 1px dotted red;">
+		<h5>Gel Tips Full Set <div style="text-align:right;display:inline-block;width:528px">$50</div></h5><hr style="border: 1px dotted red;">
+		<h5>Fill Ins <div style="text-align:right;display:inline-block;width:605px">$32</div></h5><hr style="border: 1px dotted red;">
+		<h5>Soak Off <div style="text-align:right;display:inline-block;width:587px">$15</div></h5><hr style="border: 1px dotted red;">
+		<h5>Repairs <div style="text-align:right;display:inline-block;width:597px">$5</div></h5><hr style="border: 1px dotted red;">
+		<h5>Spa Pedicure <div style="text-align:right;display:inline-block;width:552px">$48</div></h5><hr style="border: 1px dotted red;">
+		<h5>with French Manicure <div style="text-align:right;display:inline-block;width:484px">$50</div></h5><hr style="border: 1px dotted red;">
+		<h5>Polish Change Toes <div style="text-align:right;display:inline-block;width:500px">$15</div></h5>
+    </div>
+
+	<div id="Colors" class="w3-container services w3-padding-48 w3-card" style="background-color:#dedede;">
+		<h5>Touch up  <div style="text-align:right;display:inline-block;width:581px">$67</div></h5><hr style="border: 1px dotted red;">
+		<h5>Full Highlights  <div style="text-align:right;display:inline-block;width:540px">$85 &amp; up</div></h5><hr style="border: 1px dotted red;">
+		<h5>Partial Highlights  <div style="text-align:right;display:inline-block;width:519px">$68 &amp; up</div></h5><hr style="border: 1px dotted red;">
+		<h5>Balage  <div style="text-align:right;display:inline-block;width:601px">$40 &amp; up</div></h5>
+    </div>  
+    
+	<div id="Retexturizers" class="w3-container services w3-padding-48 w3-card" style="background-color:#dedede;">
+		<h5>Permanent Waves <div style="text-align:right;display:inline-block;width:514px">$73 (+haircut)</div></h5><hr style="border: 1px dotted red;">
+		<h5>Special Wrap Perms <div style="text-align:right;display:inline-block;width:499px">$90 (+ haircut)</div></h5><hr style="border: 1px dotted red;">
+		<h5>Partial Perms <div style="text-align:right;display:inline-block;width:554px">$64 (+ haircut)</div></h5><hr style="border: 1px dotted red;">
+		<h5>Keratin Treatments</h5><hr style="border: 1px dotted red;">
+		<h5>Keratin Express <div style="text-align:right;display:inline-block;width:536px">$60 &amp; up</div></h5><hr style="border: 1px dotted red;">
+		<h5>Cezanne <div style="text-align:right;display:inline-block;width:588px">$150 &amp; up</div></h5><hr style="border: 1px dotted red;">
+    </div>  
+    
+	<div id="Other" class="w3-container services w3-padding-48 w3-card" style="background-color:#dedede;">
+		<h5>Make-up <div style="text-align:right;display:inline-block;width:583px">$35</div></h5><hr style="border: 1px dotted red;">
+		<h5>Gift Certificates Available</h5>
+    </div>  
+  </div>
+</div>
+
+<br>
+
+<footer>
+
+	<a href=""> <img src="facebook.jpg" height="35" width="40" style="border-radius: 13%;"></img></a>
+		
+	<a href=""> <img src="twitter.png" height="47" width="75" style="border-radius: 3%;"></img></a>
+		
+	<a href=""> <img src="Instagram.jpg" height="35" width="40" style="border-radius: 13%;"></img></a>
+		
+	<p id="footer-info">salon site design by <a href="#" >CIST 2950/2931 Team</a>&nbsp;</p>
+
+</footer>	
+	
+<script>
+// Tabbed Menu
+function openMenu(evt, servicesName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("services");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(servicesName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+	
+
+</body>
+</html>

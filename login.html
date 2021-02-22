@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<title>Login - The Hair Salon</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=SvD85pwKwXCRgnUYP5MY1GMZq20S2dQ53TbFYYxcYQVs-ENHZ87ySld5iuufhA--EaovhwJbnLFcQ8jwuyWrz3q-zdn8pWA4Mfjm-uXLQKzHKQH-axNIl6R3UctIspX9ekek2sZPpmhgQia0xYqTuA" charset="UTF-8"></script><style>
+body {font-family: Garamond, serif;
+background-image: url("https://images.squarespace-cdn.com/content/v1/5ab12482cc8fed2171d349a5/1560266303815-SPPMS02LTU54BLWD9PX5/ke17ZwdGBToddI8pDm48kG87Sfbgg29A4BYEDq3OXvgUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcf4OxbJOyh_wHUnyc4kQLQ6SBshRGOku7c30Y_IRDNPta8R2IY5BHMaEj1zOWoDTZ/photo-1527904219733-fddc74937915.jpeg?format=1500w");
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+background-blend-mode: screen;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover{
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+h1 {
+    text-align:center;
+}
+
+h2 {text-align: center;}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.8;
+}
+
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
+</style>
+</head>
+<body>
+<div class="transbox">
+<h1 style="color:DarkBlue;">Welcome to THS</h1>
+<h2 style="color:DarkBlue;">Please Login</h2>
+</div>
+
+<form action="" method="post">
+  <div class="imgcontainer">
+    <img src="https://cdn.discordapp.com/attachments/692467198655987833/804975854101725224/Picture1-removebg-preview.png" alt="Avatar" width="247" height="300">
+  </div>
+
+  <center>
+  <div class="container" style="text-align:center; width:500px;">
+    <br><br>
+	<label for="uname"><b>Username</b></label>
+    <input style="text-align:center;" type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input style="text-align:center;"type="password" placeholder="Enter Password" name="psw" required>
+        
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>	
+  </div>
+  </center>
+
+  <div class="container">
+    <a href="home.html"><button type="button" class="cancelbtn">Cancel</button></a>
+    <span class="psw">Forgot <a href="">password?</a></span>
+  </div>
+  
+  <p style="text-align: center;">
+		Need to Sign Up? Sign up <a href="SignUpPage.html">Here!</a>
+	</p>
+  
+</form>
+
+</body>
+</html>

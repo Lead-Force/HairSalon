@@ -5,20 +5,18 @@
  */
 package Servlets;
 
+import BusinessObjects.Admin;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 /**
  *
@@ -31,72 +29,38 @@ public class LoginServletAdminDB extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String id, pw, pwdb;
+            //Get admin object
+            Admin z1 = new Admin();
+            
+            //Main code
+            System.out.println("Starting admin login servlet...");
+            String id, pw, dbId, dbPw;
             id = request.getParameter("idtb");
             pw = request.getParameter("pwtb");
-            pwdb = null;
-            System.out.println("ID " +id + " PW: " + pw);
-            try{
-                //Load driver
-                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-                
-                //get connection
-                Connection con = DriverManager.getConnection("jdbc:ucanaccess://" + 
-                "B:\\OneDrive - Chattahoochee Technical College\\SPRING21\\SYSTEMS PROJECT\\Databases\\db.accdb");
-                
-                //Create statement
-                Statement stmt = con.createStatement();
-                
-                //Execute Statement
-                ResultSet rs;
-                rs = stmt.executeQuery("select * from Admin where AdminId='"+id+"'");
-                
-                //Process data
-                while(rs!=null && rs.next()){
-                    //a = rs.getString("AdminId");
-                    //b= rs.getString(1);
-                    pwdb = rs.getString(1);
-                    System.out.println("ID: " + rs.getString("AdminId") + " Password: " + rs.getString(1)+" ");
-                    System.out.println("---------------------------");
-
-                }
-                
-                //close connection
-                con.close();
-                
-            }  catch (ClassNotFoundException ex) {
-                Logger.getLogger(LoginServletAdminDB.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(LoginServletAdminDB.class.getName()).log(Level.SEVERE, null, ex);
+            z1.selectDB(id);
+            dbId = z1.getAdminId();
+            dbPw = z1.getAdminPw();
+            System.out.println("Jsp Id: " +id + " JspPw " + pw);
+            System.out.println("Db Id: " +dbId + " DbPw " + dbPw);
+            
+            //valid login
+            if(pw.equals(dbPw) && id.equals(dbId)){
+                RequestDispatcher rd = request.getRequestDispatcher("AdminLanding.jsp");
+                rd.forward(request, response);
+                System.out.println("Valid login");
             }
-            if (pw.equals(pwdb)){
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServletAdminDB</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Valid Servlet LoginServletAdminDB at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            response.sendRedirect("AdminLanding.jsp");
-        }
+            //invalid login
             else{
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServletAdminDB</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Invalid Servlet LoginServletAdminDB at " + request.getContextPath() + "</h1>");
-            //out.println(a);
-            //out.println(b);
-            out.println("</body>");
-            out.println("</html>");
-            response.sendRedirect("login.jsp");
-            }
-        }
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                rd.forward(request, response);
+                System.out.println("Invalid login");
+            } 
+
+            } catch (IOException ex) {
+            Logger.getLogger(LoginServletAdminDB.class.getName()).log(Level.SEVERE, null, ex);
+        }/*finally{
+            out.close();
+        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

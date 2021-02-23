@@ -41,7 +41,7 @@ public class Admin {
             public static void main(String [] args){
             //Test InstAnciating a Admin object
             Admin c1 = new Admin();
-            c1.selectDB("e0011");
+            c1.selectDB("3001");
             //c2.insertDB(300, 963, "Anna", "Williams", "10 Hems Mansion, Dublin", "awilliams@gcorp.co.ire");
             //c2.deleteDB();
             //display
@@ -50,33 +50,6 @@ public class Admin {
             //System.out.println("Password for user:" + pwdb );
         }
             
-            public void getAccounts(){
-            
-            try {//Load DB Driver
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://"
-                    + "B:\\OneDrive - Chattahoochee Technical College\\SPRING21\\SYSTEMS PROJECT\\Databases\\db.accdb");
-
-      System.out.println("DatAbase connected"); 
-            //Create StAtement
-            java.sql.Statement stmt = c1.createStatement();
-            //update stAtement definition
-            String sql = "select acctNo from Accounts where cid='"+getAdminId()+"'";
-            System.out.println(sql);
-            ResultSet rs = stmt.executeQuery(sql);
-            
-            
-            //Process ResultSet
-            int an;
-            while (rs.next()){
-                an = rs.getInt(1);
-            }
-            c1.close();
-        } catch (Exception se) {
-            System.out.println(se);
-        }
-            } 
-
         //display method
         public void displayAdmin(){
             System.out.println("ID: " + adminId+ " PW: "+ adminPw +" First Name: " + adminFname 
@@ -90,7 +63,7 @@ public class Admin {
         try {    //Load DB Driver
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://"
-                    + "B:\\OneDrive - ChattAhoochee Technical College\\SPRING21\\JAVA 3\\DB\\ChattBankMDB.mdb");
+                    + "B:\\OneDrive - Chattahoochee Technical College\\SPRING21\\SYSTEMS PROJECT\\Databases\\db.accdb");
 
             //Execute SQL StAtement
             Statement stmt = c1.createStatement();
@@ -98,13 +71,13 @@ public class Admin {
 
             //Process ResultSet
             rs.next();
-            adminId = rs.getString(1);
-            adminPw = rs.getString(2);
-            adminFname = rs.getString(3);
-            adminLname = rs.getString(4);
-            adminAddress = rs.getString(5);
-            adminEmail = rs.getString(6);
-            getAccounts();
+            //adminId = rs.getString(0);
+            adminPw = rs.getString(1);
+            adminFname = rs.getString(2);
+            adminLname = rs.getString(3);
+            adminAddress = rs.getString(4);
+            adminEmail = rs.getString(5);
+            
             c1.close();
         } catch (Exception se) {
             System.out.println(se);

@@ -1,113 +1,172 @@
-package HairSalon;
-
-import java.awt.Image;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyListener;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyEvent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package BusinessObjects;
 
 /**
  *
  * @author Jean
+ * Hairdresser business object for Hairdresser login
+ * THS System Project
  */
 
-public class LoginServletHairdresserDB extends HttpServlet {
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-            String id, pw, pwdb;
-            id = request.getParameter("idtb");
-            pw = request.getParameter("pwtb");
-            pwdb = null;
-            System.out.println(" ID: " + id + " PW: " + pw);
-            try{
-                // Load the driver
-                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-                
-                // Get the connection
-                Connection con = DriverManager.getConnection("jdbc:ucanaccess://" + 
-                "C:\\Users\\Jean\\Desktop\\HairSalon\\db.accdb");
-                
-                // Create statement
-                Statement stmt = con.createStatement();
-                
-                // Execute Statement
-                ResultSet rs;
-                rs = stmt.executeQuery("select * from Hairdresser where HairdresserId='" + id + "'");
-                
-                // Process data
-                while(rs!=null && rs.next()){
-                    pwdb = rs.getString(1);
-                    System.out.println("ID: " + rs.getString("HairdresserId") + " Password: " + rs.getString(1)+" ");
-                    System.out.println("---------------------------");
-
-                }
-                
-                //Close the connection
-                con.close();
-                
-            }  catch (ClassNotFoundException ex) {
-                Logger.getLogger(LoginServletHairdresserDB.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(LoginServletHairdresserDB.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if (pw.equals(pwdb)){
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServletHairdresserDB</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Valid Servlet LoginServletHairdresserDB at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            response.sendRedirect("HairdresserLanding.jsp");
+public class Hairdresser {
+    
+    //Properties
+    String HairdresserId, HairdresserPw;
+    String HairdresserFname, HairdresserLname, HairdresserAddress, HairdresserEmail;
+    
+    //Constructor that passes no arguments
+    public Hairdresser(){
+        HairdresserId = HairdresserPw = null;
+        HairdresserFname = HairdresserLname= HairdresserAddress = HairdresserEmail = null;
+    }
+    
+    //Constructor that passes all arguments
+    public Hairdresser(String id, String pw, String fName, String lName, String address, String email){
+        HairdresserId = id;
+        HairdresserPw = pw;
+        HairdresserFname = fName;
+        HairdresserLname = lName;
+        HairdresserAddress = address;
+        HairdresserEmail = email;
+    }
+    
+            public static void main(String [] args){
+            //Test Instanciating a Hairdresser object
+            Hairdresser c1 = new Hairdresser();
+            c1.selectDB("3001");
+            //c2.insertDB(300, 963, "Anna", "Williams", "10 Hems Mansion, Dublin", "awilliams@gcorp.co.ire");
+            //c2.deleteDB();
+            //display
+            c1.displayHairdresser();
+            //int pwdb = c2.getHairdresserPw();
+            //System.out.println("Password for user:" + pwdb );
         }
-            else{
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServletHairdresserDB</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Invalid Servlet LoginServletHairdresserDB at " + request.getContextPath() + "</h1>");
-            //out.println(a);
-            //out.println(b);
-            out.println("</body>");
-            out.println("</html>");
-            response.sendRedirect("login.jsp");
-            }
+            
+        //display method
+        public void displayHairdresser(){
+            System.out.println("ID: " + HairdresserId+ " PW: "+ HairdresserPw +" First Name: " + HairdresserFname 
+                    + " Last Name " + HairdresserLname + " Address: " + HairdresserAddress + 
+                    " Email: " + HairdresserEmail);
+            
+        }
+        
+    public void selectDB(String i) {
+        HairdresserId = i;
+        try {    //Load DB Driver
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://"
+                    + "C:\\Users\\Jean\\Downloads\\db.accdb");
+
+            //Execute SQL StAtement
+            Statement stmt = c1.createStatement();
+            ResultSet rs = stmt.executeQuery("Select * from Hairdresser where HairdresserID = " + i);
+
+            //Process ResultSet
+            rs.next();
+            //HairdresserId = rs.getString(0);
+            HairdresserPw = rs.getString(1);
+            HairdresserFname = rs.getString(2);
+            HairdresserLname = rs.getString(3);
+            HairdresserAddress = rs.getString(4);
+            HairdresserEmail = rs.getString(5);
+            
+            c1.close();
+        } catch (Exception se) {
+            System.out.println(se);
+        }
+    } //end selectDB()
+    
+    //insertDB
+        public void insertDB(String id, String pw, String fn, String ln, String adr, 
+                String eml){
+        //assign values
+        HairdresserId = id;
+        HairdresserPw = pw;
+        HairdresserFname = fn;
+        HairdresserLname = ln;
+        HairdresserAddress = adr;
+        HairdresserEmail = eml;
+        
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://"
+                    + "C:\\Users\\Jean\\Downloads\\db.accdb");
+
+            System.out.println("DatAbase connected"); 
+            // Create StAtement
+            java.sql.Statement stmt = c1.createStatement();
+            // Update stAtement definition
+            String sql2 = "insert into Hairdresser values('"+getHairdresserId()+"',"+
+                                                        "'"+getHairdresserPw()+"',"+
+                                                      "'"+getHairdresserFname()+"',"+ 
+                                                      "'"+getHairdresserLname()+"',"+ 
+                                                      "'"+getHairdresserAddress()+"',"+
+                                                        "'"+getHairdresserEmail()+"'"+
+                                                        ")"; 
+            // Print the statement
+            System.out.println(sql2);
+            // Check for duplicates
+            int n1 = stmt.executeUpdate(sql2);
+            if (n1==1)
+                System.out.println("INSERT Successful!!!");
+            else
+                System.out.println("INSERT FAILED***********");
+            c1.close();
+        }
+        catch(Exception e1){
+            System.out.println(e1);
         }
     }
-}
+        //DeleteDB
+        public void deleteDB(){
+                        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+           java.sql.Connection con3 = DriverManager.getConnection("jdbc:ucanaccess://"
+                   + "B:\\OneDrive - Chattahoochee Technical College\\SPRING21\\SYSTEMS PROJECT\\Databases\\db.accdb");
+            System.out.println("DatAbase connected");
+            //Create StAtement - Step #3
+            java.sql.Statement stmt = con3.createStatement();
+
+            //Execute StAtement - Step #4
+            String sql3 = "Delete from Hairdresser where HairdresserId ='"+getHairdresserId()+"'"; 
+            //Print sql stAtement
+            System.out.println(sql3);
+            //check for duplicates
+            int n1 = stmt.executeUpdate(sql3);
+            if (n1==1)
+                System.out.println("DELETE Successful!!!");
+            else
+                System.out.println("DELETE FAILED***********");
+            con3.close();
+        }
+        catch(Exception e1){
+            System.out.println(e1);
+        }
+        
+        }
+        
+        //getters
+        public String getHairdresserId(){return HairdresserId;}
+        public String getHairdresserPw(){return HairdresserPw;}
+        public String getHairdresserFname() {return HairdresserFname;}
+        public String getHairdresserLname() {return HairdresserLname;}
+        public String getHairdresserAddress() {return HairdresserAddress;}
+        public String getHairdresserEmail() {return HairdresserEmail;}
+            
+        //Setters
+        public void setHairdresserId (String HairdresserId) {this.HairdresserId = HairdresserId;}
+        public void setHairdresserPw (String HairdresserPw) {this.HairdresserPw = HairdresserPw;}
+        public void setHairdresserFname(String HairdresserFname) {this.HairdresserFname = HairdresserFname;}
+        public void setHairdresserLname(String HairdresserLname) {this.HairdresserLname = HairdresserLname;}
+        public void setHairdresserAddress(String HairdresserAddress) {this.HairdresserAddress = HairdresserAddress;}
+        public void setHairdresserEmail(String HairdresserEmail) {this.HairdresserEmail = HairdresserEmail;}
+    }

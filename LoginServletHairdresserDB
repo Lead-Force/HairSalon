@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Servlets; 
+package HairSalon; 
 
 import BusinessObjects.Hairdresser;
 import java.io.IOException;
@@ -21,8 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Jean
+ * @author Renel/Jean
  */
+
 
 @WebServlet(name = "LoginServletHairdresserDB", urlPatterns = {"/LoginServletHairdresserDB"})
 public class LoginServletHairdresserDB extends HttpServlet {
@@ -60,7 +61,7 @@ public class LoginServletHairdresserDB extends HttpServlet {
 
             } catch (IOException ex) {
             Logger.getLogger(LoginServletHairdresserDB.class.getName()).log(Level.SEVERE, null, ex);
-        }/*finally{
+        }/* Finally{
             out.close();
         }*/
     }
@@ -103,5 +104,4 @@ public class LoginServletHairdresserDB extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

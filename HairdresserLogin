@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+// Package
 package BusinessObjects;
 
 /**
@@ -10,166 +12,175 @@ package BusinessObjects;
  * @author Renel/Jean
  * Hairdresser business object for Hairdresser login
  * THS System Project
+ * 
  */
 
-
+// Imports
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Hairdresser {
+// Hairdresser class
+public class HairDresser {
     
     // Properties
-    String HairdresserId, HairdresserPw;
-    String HairdresserFname, HairdresserLname, HairdresserAddress, HairdresserEmail;
+    String HairdresserId, HairdresserUser, HairdresserPw;
+    String HairdresserFname, HairdresserLname, HairdresserAddress, HairdresserPhone, HairdresserEmail;
+    Boolean FullTime; 
+    String TimeOff, HoursRequested, HoursGiven; 
+    Double PayRate;
+    
+    public HairDresser(String HairdresserId, String HairdresserUser, String HairdresserPw, String HairdresserFname, String HairdresserLname, String HairdresserAddress, String HairdresserPhone, String HairdresserEmail, Boolean FullTime, String TimeOff, String HoursRequested, String HoursGiven, Double PayRate) {
+        this.HairdresserId = HairdresserId;
+        this.HairdresserUser = HairdresserUser;
+        this.HairdresserPw = HairdresserPw;
+        this.HairdresserFname = HairdresserFname;
+        this.HairdresserLname = HairdresserLname;
+        this.HairdresserAddress = HairdresserAddress;
+        this.HairdresserPhone = HairdresserPhone;
+        this.HairdresserEmail = HairdresserEmail;
+        this.FullTime = FullTime;
+        this.TimeOff = TimeOff;
+        this.HoursRequested = HoursRequested;
+        this.HoursGiven = HoursGiven;
+        this.PayRate = PayRate;
+    }
     
     // Constructor that passes no arguments
-    public Hairdresser(){
-        HairdresserId = HairdresserPw = null;
-        HairdresserFname = HairdresserLname= HairdresserAddress = HairdresserEmail = null;
+    public HairDresser() {
+        this.HairdresserId = null;
+        this.HairdresserUser = null;
+        this.HairdresserPw = null;
+        this.HairdresserFname = null;
+        this.HairdresserLname = null;
+        this.HairdresserAddress = null;
+        this.HairdresserPhone = "0";
+        this.HairdresserEmail = null;
+        this.FullTime = false;
+        this.TimeOff = null;
+        this.HoursRequested = "0";
+        this.HoursGiven = "0";
+        this.PayRate = null;
     }
     
-    
-    
-    // Constructor that passes all arguments
-    public Hairdresser(String id, String pw, String fName, String lName, String address, String email){
-        HairdresserId = id;
-        HairdresserPw = pw;
-        HairdresserFname = fName;
-        HairdresserLname = lName;
-        HairdresserAddress = address;
-        HairdresserEmail = email;
-    }
-    
+            // Main constructor
             public static void main(String [] args){
             // Test Instanciating a Hairdresser object
-            Hairdresser c1 = new Hairdresser();
-            //c1.selectDB("3001");
+            HairDresser c1 = new HairDresser(/*"3001", "1234", "Peter", "Frampton", "123 Main St", "pframp@gmail.com"*/);
+            c1.selectDB("2001");
             //c2.insertDB(300, 963, "Anna", "Williams", "10 Hems Mansion, Dublin", "awilliams@gcorp.co.ire");
             //c2.deleteDB();
             //display
-            //c1.displayHairdresser();
+            c1.displayHairdresser();
             //int pwdb = c2.getHairdresserPw();
             //System.out.println("Password for user:" + pwdb );
         }
             
         // Display method
         public void displayHairdresser(){
-            System.out.println("ID: " + HairdresserId+ " PW: "+ HairdresserPw +" First Name: " + HairdresserFname 
-                    + " Last Name " + HairdresserLname + " Address: " + HairdresserAddress + 
-                    " Email: " + HairdresserEmail);
-            
+            System.out.println("ID: " + HairdresserId + " User: " + HairdresserUser + " Password: " + HairdresserPw + " First Name: " + HairdresserFname + " Last Name: " + HairdresserLname + " Address: " + HairdresserAddress + " Phone Number: " + HairdresserPhone + " Email: " + HairdresserEmail + "Full Time: " + FullTime + " Time Off: " + TimeOff + " Hours Requested: " + HoursRequested + " Hours Given: " + HoursGiven + " Pay Rate: " + PayRate);   
         }
         
-    public void selectDB(String i) {
-        HairdresserId = i;
-        try {    // Load DB Driver
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://"
-                    + "C:\\Users\\Jean\\Downloads\\db.accdb");
-
-            // Execute SQL StAtement
+        // Select database method
+        public void selectDB(String i) {
+            
+            HairdresserId = i;
+            try { // Load DB Driver
+                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://" +
+                "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
+                System.out.println("Database is connected");
+                
+            // Execute SQL statement
             Statement stmt = c1.createStatement();
-            ResultSet rs = stmt.executeQuery("Select * from Hairdresser where HairdresserID = " + i);
-
-            // Process ResultSet
-            rs.next();
-            // HairdresserId = rs.getString(0);
-            HairdresserPw = rs.getString(1);
-            HairdresserFname = rs.getString(2);
-            HairdresserLname = rs.getString(3);
-            HairdresserAddress = rs.getString(4);
-            HairdresserEmail = rs.getString(5);
+            ResultSet rs = stmt.executeQuery("Select * from Hairdresser2 where ID = " + i);
             
-            c1.close();
-        } catch (Exception se) {
-            System.out.println(se);
-        }
+            // Process ResultSet
+            rs.next(); 
+            // HairdresserId = rs.getString(0); 
+            HairdresserUser = rs.getString(2); 
+            HairdresserPw = rs.getString(3); 
+            HairdresserFname = rs.getString(4); 
+            HairdresserLname = rs.getString(5); 
+            HairdresserAddress = rs.getString(6); 
+            HairdresserPhone = rs.getString(7); 
+            HairdresserEmail = rs.getString(8); 
+            FullTime = rs.getBoolean(9); 
+            TimeOff = rs.getString(10); 
+            HoursRequested = rs.getString(11); 
+            HoursGiven = rs.getString(12); 
+            PayRate = rs.getDouble(13); 
+            System.out.println("ResultSet Processed");
+            
+            // Close connection
+            c1.close(); 
+            System.out.println("Connection ended");
+            }   catch   (Exception se) {
+                System.out.println(se);
+            }
+        
     } // End selectDB()
-    
-    // InsertDB
-        public void insertDB(String id, String pw, String fn, String ln, String adr, 
-                String eml){
-        //assign values
-        HairdresserId = id;
-        HairdresserPw = pw;
-        HairdresserFname = fn;
-        HairdresserLname = ln;
-        HairdresserAddress = adr;
-        HairdresserEmail = eml;
         
-        try{
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://"
-                    + "C:\\Users\\Jean\\Downloads\\db.accdb");
-
-            System.out.println("DatAbase connected"); 
-            // Create statement
-            java.sql.Statement stmt = c1.createStatement();
-            // Update statement definition
-            String sql2 = "insert into Hairdresser values('"+getHairdresserId()+"',"+
-                                                        "'"+getHairdresserPw()+"',"+
-                                                      "'"+getHairdresserFname()+"',"+ 
-                                                      "'"+getHairdresserLname()+"',"+ 
-                                                      "'"+getHairdresserAddress()+"',"+
-                                                        "'"+getHairdresserEmail()+"'"+
-                                                        ")"; 
-            // Print the statement
-            System.out.println(sql2);
-            // Check for duplicates
-            int n1 = stmt.executeUpdate(sql2);
-            if (n1==1)
-                System.out.println("INSERT SUCCESSFUL");
-            else
-                System.out.println("INSERT");
-            c1.close();
-        }
-        catch(Exception e1){
-            System.out.println(e1);
-        }
+        // Insert database method
+        
+        /*****************************************************
+         * Getters & Setters
+         *****************************************************/
+        
+    public void setHairdresserUser(String HairdresserUser) {
+        this.HairdresserUser = HairdresserUser;
     }
-        // DeleteDB
-        public void deleteDB(){
-                        try{
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-           java.sql.Connection con3 = DriverManager.getConnection("jdbc:ucanaccess://"
-                   + "B:\\OneDrive - Chattahoochee Technical College\\SPRING21\\SYSTEMS PROJECT\\Databases\\db.accdb");
-            System.out.println("DatAbase connected");
-            // Create StAtement - Step #3
-            java.sql.Statement stmt = con3.createStatement();
 
-            // Execute Statement - Step #4
-            String sql3 = "Delete from Hairdresser where HairdresserId ='" + getHairdresserId() + "'"; 
-            // Print SQL statement
-            System.out.println(sql3);
-            // check for duplicates
-            int n1 = stmt.executeUpdate(sql3);
-            if (n1==1)
-                System.out.println("DELETE SUCCESSFUL");
-            else
-                System.out.println("DELETE FAILED");
-            con3.close();
-        }
-        catch(Exception e1){
-            System.out.println(e1);
-        }
-        
-        }
-        
-        // Setters
-        public void setHairdresserId (String HairdresserId) {this.HairdresserId = HairdresserId;}
-        public void setHairdresserPw (String HairdresserPw) {this.HairdresserPw = HairdresserPw;}
-        public void setHairdresserFname(String HairdresserFname) {this.HairdresserFname = HairdresserFname;}
-        public void setHairdresserLname(String HairdresserLname) {this.HairdresserLname = HairdresserLname;}
-        public void setHairdresserAddress(String HairdresserAddress) {this.HairdresserAddress = HairdresserAddress;}
-        public void setHairdresserEmail(String HairdresserEmail) {this.HairdresserEmail = HairdresserEmail;}
-        
-        // Getters
-        public String getHairdresserId(){return HairdresserId;}
-        public String getHairdresserPw(){return HairdresserPw;}
-        public String getHairdresserFname() {return HairdresserFname;}
-        public String getHairdresserLname() {return HairdresserLname;}
-        public String getHairdresserAddress() {return HairdresserAddress;}
-        public String getHairdresserEmail() {return HairdresserEmail;}
+    public void setHairdresserPhone(String HairdresserPhone) {
+        this.HairdresserPhone = HairdresserPhone;
     }
+
+    public void setFullTime(Boolean FullTime) {
+        this.FullTime = FullTime;
+    }
+
+    public void setTimeOff(String TimeOff) {
+        this.TimeOff = TimeOff;
+    }
+
+    public void setHoursRequested(String HoursRequested) {
+        this.HoursRequested = HoursRequested;
+    }
+
+    public void setHoursGiven(String HoursGiven) {
+        this.HoursGiven = HoursGiven;
+    }
+
+    public void setPayRate(Double PayRate) {
+        this.PayRate = PayRate;
+    }
+
+    public String getHairdresserUser() {
+        return HairdresserUser;
+    }
+
+    public String getHairdresserPhone() {
+        return HairdresserPhone;
+    }
+
+    public Boolean getFullTime() {
+        return FullTime;
+    }
+
+    public String getTimeOff() {
+        return TimeOff;
+    }
+
+    public String getHoursRequested() {
+        return HoursRequested;
+    }
+
+    public String getHoursGiven() {
+        return HoursGiven;
+    }
+
+    public Double getPayRate() {
+        return PayRate;
+    }
+}

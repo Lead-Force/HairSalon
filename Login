@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : Feb 15, 2021, 5:37:45 PM
-    Author     : renel/Jean
+    Author     : Jean
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -45,7 +45,7 @@
     <h2>Hairdresser Login Page</h2><br>
     <div class="login">
 	<center>
-    <form name="loginForm" action="C:\Users\Jean\Documents\NetBeansProjects\HairSalon\build\classes\HairSalon\LoginServletHairdresserDB" method="post">
+    <form name="loginForm" action="http://localhost:8080/THS/LoginServletHairdresserDB" method="post">
         <label style="padding-right: 214px;"><b>User Name:</b></label>
         <input type="text" name="idtb" id="Uname" placeholder="Username" required>
         <br><br>

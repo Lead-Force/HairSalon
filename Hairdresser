@@ -68,7 +68,7 @@ public class HairDresser {
             public static void main(String [] args){
             // Test Instanciating a Hairdresser object
             HairDresser c1 = new HairDresser(/*"3001", "1234", "Peter", "Frampton", "123 Main St", "pframp@gmail.com"*/);
-            c1.selectDB("2001");
+            c1.selectDB("2003");
             //c2.insertDB(300, 963, "Anna", "Williams", "10 Hems Mansion, Dublin", "awilliams@gcorp.co.ire");
             //c2.deleteDB();
             //display
@@ -121,13 +121,36 @@ public class HairDresser {
             }
         
     } // End selectDB()
+
+    
+     /*****************************************************
+     * Getters & Setters
+     *****************************************************/    
         
-        // Insert database method
-        
-        /*****************************************************
-         * Getters & Setters
-         *****************************************************/
-        
+    public void setHairdresserId(String HairdresserId) {
+        this.HairdresserId = HairdresserId;
+    }
+
+    public void setHairdresserPw(String HairdresserPw) {
+        this.HairdresserPw = HairdresserPw;
+    }
+
+    public void setHairdresserFname(String HairdresserFname) {
+        this.HairdresserFname = HairdresserFname;
+    }
+
+    public void setHairdresserLname(String HairdresserLname) {
+        this.HairdresserLname = HairdresserLname;
+    }
+
+    public void setHairdresserAddress(String HairdresserAddress) {
+        this.HairdresserAddress = HairdresserAddress;
+    }
+
+    public void setHairdresserEmail(String HairdresserEmail) {
+        this.HairdresserEmail = HairdresserEmail;
+    }
+
     public void setHairdresserUser(String HairdresserUser) {
         this.HairdresserUser = HairdresserUser;
     }
@@ -156,6 +179,30 @@ public class HairDresser {
         this.PayRate = PayRate;
     }
 
+    public String getHairdresserId() {
+        return HairdresserId;
+    }
+
+    public String getHairdresserPw() {
+        return HairdresserPw;
+    }
+
+    public String getHairdresserFname() {
+        return HairdresserFname;
+    }
+
+    public String getHairdresserLname() {
+        return HairdresserLname;
+    }
+
+    public String getHairdresserAddress() {
+        return HairdresserAddress;
+    }
+
+    public String getHairdresserEmail() {
+        return HairdresserEmail;
+    }
+
     public String getHairdresserUser() {
         return HairdresserUser;
     }
@@ -182,5 +229,6 @@ public class HairDresser {
 
     public Double getPayRate() {
         return PayRate;
-    }
+    }    
+    
 }

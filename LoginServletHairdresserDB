@@ -1,69 +1,89 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-package HairSalon; 
-
-import BusinessObjects.Hairdresser;
+import BusinessObjects.HairDresser;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
+import static java.lang.System.out;
 
 /**
  *
- * @author Renel/Jean
+ * @author Jean
  */
-
-
-@WebServlet(name = "LoginServletHairdresserDB", urlPatterns = {"/LoginServletHairdresserDB"})
-public class LoginServletHairdresserDB extends HttpServlet {
+@WebServlet(urlPatterns = {"/HDLoginServlet"})
+public class HDLoginServlet extends HttpServlet {
     String a,b = null;
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        System.out.println("In HairDresser Servlet");
         try (PrintWriter out = response.getWriter()) {
             // Get Hairdresser object
-            Hairdresser z1 = new Hairdresser();
+            HairDresser h1 = new HairDresser();
             
             // Main code
-            System.out.println("Starting Hairdresser login servlet...");
-            String id, pw, dbId, dbPw;
-            id = request.getParameter("idtb");
-            pw = request.getParameter("pwtb");
-            z1.selectDB(id);
-            dbId = z1.getHairdresserId();
-            dbPw = z1.getHairdresserPw();
-            System.out.println("Jsp Id: " +id + " JspPw " + pw);
-            System.out.println("Db Id: " +dbId + " DbPw " + dbPw);
+            System.out.println("Starting HairDresser login servlet...");
+            String HUser, HPass, dbId, dbPw;
+            HUser = request.getParameter("uname");
+            HPass = request.getParameter("psw");
+            h1.selectDB(HUser);
+            System.out.println("uname = " + HUser); 
+            System.out.println("psw = " + HPass);
+            
+            
+            h1.selectDB(HUser);
+                dbPw=h1.getHairdresserPw(); 
+            //    String dbPw1 = dbPw.trim();
+            //    System.out.println("dbPw1 = /"+ dbPw1+"/");
             
             // Valid login
-            if(pw.equals(dbPw) && id.equals(dbId)){
-                RequestDispatcher rd = request.getRequestDispatcher("HairdresserLanding.jsp");
-                rd.forward(request, response);
-                System.out.println("Valid login");
-            }
-            // Invalid login
-            else{
-                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                rd.forward(request, response);
-                System.out.println("Invalid login");
-            } 
-
-            } catch (IOException ex) {
-            Logger.getLogger(LoginServletHairdresserDB.class.getName()).log(Level.SEVERE, null, ex);
-        }/* Finally{
-            out.close();
-        }*/
+            System.out.println("Outside IF");
+            // if(HPass.equals(dbPw)){
+            HttpSession session = request.getSession(); // Returns the current session
+            // }
+            
+                
+            // dbId = h1.getHairdresserId();
+            // dbPw = h1.getHairdresserPw();
+            // System.out.println("dbId" + HairdresserId); 
+            // System.out.println("dbPw " + HairdresserPw);
+            
+            
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet HDLoginServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet HDLoginServlet located at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Session Name: " + request.getSession() + "</h1>");
+            out.println("<h1>Hairdresser User: " + request.getParameter(HUser) + "</h1>");
+            out.println("<h1>Hairdresser Password: " + request.getParameter(HPass) + "</h1>");
+            out.println("<h1>dbPw: " + request.getParameter(dbPw) + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -104,4 +124,5 @@ public class LoginServletHairdresserDB extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

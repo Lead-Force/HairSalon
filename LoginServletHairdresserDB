@@ -64,25 +64,34 @@ public class HDLoginServlet extends HttpServlet {
             // (No Inpurt from JSP) Output: Info:   h1 = BusinessObjects.HairDresser@f6d3bf2
             // (With Input from JSP) Output:Info:   h1 = BusinessObjects.HairDresser@100d00af
             // (With Input from JSP) Output:Info:   h1 = BusinessObjects.HairDresser@4cb06ab7
+            
+            // Get dbId from Database
             dbId = h1.getHairdresserId(); 
             System.out.println("dbId = " + dbId );
             out.println("<h1>Servlet: ID from DB " + dbId + "</h1>");
+            
+            // Get dbPw from Database
             dbPw = h1.getHairdresserPw(); 
             System.out.println("dbPw = " + dbPw );
             out.println("<h1>Servlet: PW from DB " + dbPw + "</h1>");
+            
+            // dbPw trim
             String dbPw1 = dbPw.trim();
             System.out.println("dbPw1 = " + dbPw1);
             out.println("<h1>dbPw1: " + dbPw1 + "</h1>");
+            
+            // dbId trim
             String dbId1 = dbId.trim();
             System.out.println("dbId1 = " + dbId1);
             out.println("<h1>dbId1: " + dbId1 + "</h1>");
             
             // Valid login
+            System.out.println("DBPW = " + dbPw + " JSP PW = " + HPass);
             System.out.println("Outside IF");
             
             // Test IF:
             // ID works fine; Password doesn't work fine
-            if(/*HPass.equals(dbPw1) &&*/ HID.equals(dbId1)){
+            if(HPass.equals(dbPw) /*&& HID.equals(dbId1)*/){
                 RequestDispatcher rd = request.getRequestDispatcher("HairdresserLanding.jsp");
                 rd.forward(request, response);
                 System.out.println("Valid login");

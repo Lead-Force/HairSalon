@@ -8,10 +8,127 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Copperplate, Papyrus, fantasy;
+background-image: url("https://images.squarespace-cdn.com/content/v1/5ab12482cc8fed2171d349a5/1560266303815-SPPMS02LTU54BLWD9PX5/ke17ZwdGBToddI8pDm48kG87Sfbgg29A4BYEDq3OXvgUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcf4OxbJOyh_wHUnyc4kQLQ6SBshRGOku7c30Y_IRDNPta8R2IY5BHMaEj1zOWoDTZ/photo-1527904219733-fddc74937915.jpeg?format=1500w");
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+background-blend-mode: screen;
+}
+
+img{border-radius: 50%;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover{
+  opacity: 0.8;
+}
+.container {
+  padding: 16px;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+h1 {
+    text-align:center;
+}
+
+h2 {text-align: center;}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+    
     <body>
-        <h1>Hairdresser Landing Page</h1>
+        <h1>Welcome to the Hairdresser Landing Page</h1>
+        <h2>Change Information</h2>
+        <form action= "ChangeInformationServlet">
+    <div class="container">
+    <label for="uname"><b>New Username</b></label>
+    <input type="text" placeholder="Enter Username" name="ID">
+
+    <label for="psw"><b>New Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw">
+    
+    <label for="psw"><b>New First Name</b></label>
+    <input type="password" placeholder="Enter First Name" name="fname">
+    
+    <label for="psw"><b>New Last Name</b></label>
+    <input type="password" placeholder="Enter Last Name" name="lname">
+    
+    <label for="psw"><b>New ID</b></label>
+    <input type="password" placeholder="Enter ID" name="id">
+    
+    <label for="psw"><b>New Email</b></label>
+    <input type="password" placeholder="Enter Email" name="email">
+    
+    <label for="psw"><b>New Address</b></label>
+    <input type="password" placeholder="Enter Address" name="address">
+    
+    <label for="psw"><b>New Phone Number</b></label>
+    <input type="password" placeholder="Enter Phone Number" name="phone">
+    
+    <label for="psw"><b>New Phone Number</b></label>
+    <input type="password" placeholder="Enter Phone Number" name="phone">
+    
+    <label for="psw"><b>New Time Off</b></label>
+    <input type="password" placeholder="Enter Time Off" name="timeoff">
+    
+    <label for="psw"><b>New Hours Requested</b></label>
+    <input type="password" placeholder="Enter Hours Requested" name="hoursrequested">
+    
+    <button type="submit">Change Info</button>
+    </div>
+
+    </form>
+        
+        
     </body>
 </html>

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="BusinessObjects.HairDresser" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -89,40 +90,42 @@ span.psw {
     <body>
         <h1>Welcome to the Hairdresser Landing Page</h1>
         <h2>Change Information</h2>
-        <form action= "ChangeInformationServlet">
+        <form action= "ProfileServlet">
+            
+            <%  session = request.getSession();
+            HairDresser h1 = (HairDresser)(session.getAttribute("Hairdresser"));
+            %>
+        
     <div class="container">
-    <label for="uname"><b>New Username</b></label>
-    <input type="text" placeholder="Enter Username" name="ID">
+    <label for="id"><b>New ID</b></label>
+    <input type="text" placeholder="Enter ID" name="id">    
+        
+    <label for="user"><b>New Username</b></label>
+    <input type="text" placeholder="Enter Username" name="user" required>
 
     <label for="psw"><b>New Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw">
+    <input type="text" placeholder="Enter Password" name="psw">
     
-    <label for="psw"><b>New First Name</b></label>
-    <input type="password" placeholder="Enter First Name" name="fname">
+    <label for="fname"><b>New First Name</b></label>
+    <input type="text" placeholder="Enter First Name" name="fname">
     
-    <label for="psw"><b>New Last Name</b></label>
-    <input type="password" placeholder="Enter Last Name" name="lname">
+    <label for="lname"><b>New Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" name="lname">
     
-    <label for="psw"><b>New ID</b></label>
-    <input type="password" placeholder="Enter ID" name="id">
+    <label for="email"><b>New Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email">
     
-    <label for="psw"><b>New Email</b></label>
-    <input type="password" placeholder="Enter Email" name="email">
+    <label for="address"><b>New Address</b></label>
+    <input type="text" placeholder="Enter Address" name="address">
     
-    <label for="psw"><b>New Address</b></label>
-    <input type="password" placeholder="Enter Address" name="address">
+    <label for="phone"><b>New Phone Number</b></label>
+    <input type="text" placeholder="Enter Phone Number" name="phone">
     
-    <label for="psw"><b>New Phone Number</b></label>
-    <input type="password" placeholder="Enter Phone Number" name="phone">
+    <label for="timeoff"><b>New Time Off</b></label>
+    <input type="text" placeholder="Enter Time Off" name="timeoff">
     
-    <label for="psw"><b>New Phone Number</b></label>
-    <input type="password" placeholder="Enter Phone Number" name="phone">
-    
-    <label for="psw"><b>New Time Off</b></label>
-    <input type="password" placeholder="Enter Time Off" name="timeoff">
-    
-    <label for="psw"><b>New Hours Requested</b></label>
-    <input type="password" placeholder="Enter Hours Requested" name="hoursrequested">
+    <label for="hoursrequested"><b>New Hours Requested</b></label>
+    <input type="text" placeholder="Enter Hours Requested" name="hoursrequested">
     
     <button type="submit">Change Info</button>
     </div>

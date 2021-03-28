@@ -67,13 +67,42 @@ public class HairDresser {
             // Main constructor
             public static void main(String [] args){
             // Test Instanciating a Hairdresser object
-            HairDresser c1 = new HairDresser(/*"3001", "1234", "Peter", "Frampton", "123 Main St", "pframp@gmail.com"*/);
-            c1.selectDB("2003");
-            //c2.insertDB(300, 963, "Anna", "Williams", "10 Hems Mansion, Dublin", "awilliams@gcorp.co.ire");
-            //c2.deleteDB();
+            // HairDresser c1 = new HairDresser(/*"3001", "1234", "Peter", "Frampton", "123 Main St", "pframp@gmail.com"*/);
+            // h1.selectDB("2003");
+            //h2.insertDB(300, 963, "Anna", "Williams", "10 Hems Mansion, Dublin", "awilliams@gcorp.co.ire");
+            //h2.deleteDB();
             //display
-            c1.displayHairdresser();
+            // h1.displayHairdresser();
             //int pwdb = c2.getHairdresserPw();
+            //System.out.println("Password for user:" + pwdb );
+            
+            //Test Instanciating a hairDresser object
+            //HairDresser hd1 = new HairDresser();
+            //hd1.selectDB("2007");
+            //h1.updateDB("2007","idTest","pwTsest","fname","lname","address", "404-770-6498","email@gmail.com",true,"TW",24,24,12.0);
+            //hd1.deleteDB();
+            //display
+            //hd1.displayHairDresser();
+            //hd1.displayHairDresser();
+            
+            //Test InstAnciating a Admin object
+            HairDresser h1 = new HairDresser();
+            h1.selectDB("2001");
+            // h1.updateDB();
+            h1.displayHairdresser();
+            // h1.updateDB("Harry", "Potter", "Dorsey Dr", "123", "hpotter@gmail.com");
+            // h1.updateDB("Harry", "Potter", "Dorsey Dr", "123", "hpotter@gmail.com", null, "Y", "40", null, null);
+            // h1.updateDB("JohnD","pwTest","fname","lname","address", "404-770-6498","email@gmail.com");
+            System.out.println("Main method");
+            //h1.selectDB("BenS");
+            //h1.insertDB("8787", "Jessica", "Smith", "10 Hems Mansion","123-456-7789", "JS@gmail.com", "JessicaS", "Smith33");
+            //h1.deleteDB("8787");
+            // h1.selectDB("BenS");
+            // h1.setFirstName("Jinny");
+            // h1.updateDB();
+            //display
+            // h1.display();
+            //int pwdb = c2.getAdminPw();
             //System.out.println("Password for user:" + pwdb );
         }
             
@@ -119,10 +148,91 @@ public class HairDresser {
             }   catch   (Exception se) {
                 System.out.println(se);
             }
-        
     } // End selectDB()
 
-    
+    /*
+    public void update(String user, String id, String pw) {
+        String sql = "UPDATE Hairdresser2 SET ID = ? , "
+                + "hdUsername = ? "
+                + "WHERE hdPw = ?";
+    }    
+    */
+        
+        public void updateDB(String user, String pw, String fname, String lname, String address, String phone, String email) {
+        
+        /*
+            fname = "Harry";
+            lname = "Potter";
+            address = "Dorsey Dr"; 
+            phone = "123";
+            email = "hpotter@gmail.com"; 
+        */
+        
+        try {
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://" +
+            "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
+            System.out.println("Database is connected");
+                
+            Statement stmt = c1.createStatement();
+            
+            String sql = "Update Hairdresser2 set "
+            + "hdUsername = '" + user + "'," + "hdPw = '" + pw + "'," + "FirstName = '"+fname+"'," + "LastName = '"+lname+"',"+ "Address ='"+address+"',"+
+            "PhoneNo = '"+phone+"',"+"Email = '"+email+"',"+
+            "Where hdUsername ='" + user + "'";
+            
+            System.out.println(sql);
+            System.out.println("Data set");
+            int n = stmt.executeUpdate(sql);
+            if(n==1)
+                System.out.println("UPDATE SUCCESSFUL!");
+            else
+                System.out.println("UPDATE FAILED!");
+            c1.close();
+            
+        }
+        catch(Exception e1){
+                System.out.println(e1);
+            }
+    } // End updateDB()
+        
+    /*    
+    public void updateDB() {
+        
+        
+        try {
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://" +
+            "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
+            System.out.println("Database is connected");
+                
+            Statement stmt = c1.createStatement();
+            
+            String sql = "Update Hairdresser2 set FirstName = '"+getHairdresserFname()+"',"+
+                                                "LastName = '"+getHairdresserLname()+"',"+
+                                                "Address ='"+getHairdresserAddress()+"',"+
+                                                "PhoneNo = '"+getHairdresserPhone()+"',"+
+                                                "Email = '"+getHairdresserEmail()+"',"+
+                    
+                                                "hdPw = '"+getHairdresserPw() + "' " +
+                                                "Where hdUsername ='"+getHairdresserUser()+"'";
+            
+            System.out.println(sql);
+            System.out.println("Data set");
+            int n = stmt.executeUpdate(sql);
+            if(n==1)
+                System.out.println("UPDATE SUCCESSFUL!");
+            else
+                System.out.println("UPDATE FAILED!");
+            c1.close();
+            
+        }
+        catch(Exception e1){
+                System.out.println(e1);
+            }
+    } // End updateDB()
+    */
+        
      /*****************************************************
      * Getters & Setters
      *****************************************************/    

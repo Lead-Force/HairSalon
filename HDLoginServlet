@@ -53,13 +53,13 @@ public class HDLoginServlet extends HttpServlet {
             
             // Main code
             System.out.println("Starting HairDresser login servlet...");
-            String HID, HPass, dbId, dbPw;
-            HID = request.getParameter("ID");
+            String HUser, HPass, dbId, dbPw;
+            HUser = request.getParameter("user");
             HPass = request.getParameter("psw");
-            h1.selectDB(HID);
-            System.out.println("(In Servlet) uname = " + HID); 
+            h1.selectDB(HUser);
+            System.out.println("(In Servlet) uname = " + HUser); 
             System.out.println("(In Servlet) psw = " + HPass);
-            h1.selectDB(HID);
+            h1.selectDB(HUser);
             System.out.println("h1 = " + h1 );
             // (No Inpurt from JSP) Output: Info:   h1 = BusinessObjects.HairDresser@f6d3bf2
             // (With Input from JSP) Output:Info:   h1 = BusinessObjects.HairDresser@100d00af
@@ -91,15 +91,18 @@ public class HDLoginServlet extends HttpServlet {
             
             // Test IF:
             // ID works fine; Password doesn't work fine
-            if(HPass.equals(dbPw) /*&& HID.equals(dbId1)*/){
+            if(HPass.equals(dbPw) && HUser.equals(dbId1)){
                 RequestDispatcher rd = request.getRequestDispatcher("HairdresserLanding.jsp");
                 rd.forward(request, response);
                 System.out.println("Valid login");
                 out.println("<h1>Valid Login!</h1>");
                 HttpSession session = request.getSession(); // Returns the current session
+                //Store the customer object in session
+                session.setAttribute("Hairdresser", h1);
+
             }
             /*
-            if(HPass.equals(dbPw1) && HID.equals(dbId)){
+            if(HPass.equals(dbPw1) && HUser.equals(dbId)){
                 RequestDispatcher rd = request.getRequestDispatcher("HairdresserLanding.jsp");
                 rd.forward(request, response);
                 System.out.println("Valid login");
@@ -114,6 +117,7 @@ public class HDLoginServlet extends HttpServlet {
                 System.out.println("Invalid login");
                 out.println("<h1>Invalid Login!</h1>");
             }
+            
             
                 
             out.println("<!DOCTYPE html>");

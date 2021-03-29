@@ -157,7 +157,7 @@
         </p>
         <p>Type in an ID that you would like to delete or edit:
             
-        <p>
+        
         <form name="HairDresserLookupForm" action="http://localhost:8080/THS/HdManagerServlet">
             <table>
                 <tr>
@@ -169,18 +169,18 @@
                         <th>Email:</th>
                     </tr>
                     <tr>
-           <td><input type="Text" name="idTb3" value ="
-                      <%if (k2!=null){out.print(k2.getHairDresserId());}%>"></td>
-            <td><input type="Text" name="fNameTb3" value ="
-                      <%if (k2!=null){out.print(k2.getHairDresserFname());}%>"></td>
-            <td><input type="Text" name="lNameTb3" value ="
-                      <%if (k2!=null){out.print(k2.getHairDresserLname());}%>"></td>
-            <td><input type="Text" name="addressTb3" value ="
-                      <%if (k2!=null){out.print(k2.getHairDresserAddress());}%>"></td>
-            <td><input type="Text" name="phoneTb3" value ="
-                      <%if (k2!=null){out.print(k2.getHairDresserPhone());}%>"></td>
-            <td><input type="Text" name="emailTb3" value ="
-                      <%if (k2!=null){out.print(k2.getHairDresserEmail());}%>"></td>
+           <td><input type="Text" name="idTb3" 
+            value ="<%if (k2!=null){out.print(k2.getHairDresserId());}%>"></td>
+            <td><input type="Text" name="fNameTb3" 
+            value ="<%if (k2!=null){out.print(k2.getHairDresserFname());}%>"></td>
+            <td><input type="Text" name="lNameTb3" 
+            value ="<%if (k2!=null){out.print(k2.getHairDresserLname());}%>"></td>
+            <td><input type="Text" name="addressTb3" 
+            value ="<%if (k2!=null){out.print(k2.getHairDresserAddress());}%>"></td>
+            <td><input type="Text" name="phoneTb3" 
+            value ="<%if (k2!=null){out.print(k2.getHairDresserPhone());}%>"></td>
+            <td><input type="Text" name="emailTb3" 
+            value ="<%if (k2!=null){out.print(k2.getHairDresserEmail());}%>"></td>
         </tr>
             </table>
 <button name="button" type="submit" value="Lookup">Lookup</button>
@@ -188,6 +188,7 @@
 <button type="reset" value="Clear">Clear</button>  
             
         </form>
+  </p>
         <!--code ends here-->
   </center>
     </div>

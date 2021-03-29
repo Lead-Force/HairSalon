@@ -88,6 +88,9 @@ public class HairDresser {
             //Test InstAnciating a Admin object
             HairDresser h1 = new HairDresser();
             h1.selectDB("2001");
+            // h1.setHairdresserFname("Ron");
+            // h1.setHairdresserLname("Weasley"); 
+            // h1.setHairdresserAddress("123 Dudley Dr");
             // h1.updateDB();
             h1.displayHairdresser();
             // h1.updateDB("Harry", "Potter", "Dorsey Dr", "123", "hpotter@gmail.com");
@@ -135,7 +138,7 @@ public class HairDresser {
             HairdresserAddress = rs.getString(6); 
             HairdresserPhone = rs.getString(7); 
             HairdresserEmail = rs.getString(8); 
-            FullTime = rs.getBoolean(9); 
+            // FullTime = rs.getBoolean(9); 
             TimeOff = rs.getString(10); 
             HoursRequested = rs.getString(11); 
             HoursGiven = rs.getString(12); 
@@ -157,16 +160,19 @@ public class HairDresser {
                 + "WHERE hdPw = ?";
     }    
     */
-        
+        /*
         public void updateDB(String user, String pw, String fname, String lname, String address, String phone, String email) {
+        */
         
         /*
-            fname = "Harry";
-            lname = "Potter";
-            address = "Dorsey Dr"; 
-            phone = "123";
-            email = "hpotter@gmail.com"; 
-        */
+        public void updateDB() {
+        
+        //    fname = "Harry";
+        //    lname = "Potter";
+        //    address = "Dorsey Dr"; 
+        //    phone = "123";
+        //    email = "hpotter@gmail.com"; 
+       
         
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -177,9 +183,9 @@ public class HairDresser {
             Statement stmt = c1.createStatement();
             
             String sql = "Update Hairdresser2 set "
-            + "hdUsername = '" + user + "'," + "hdPw = '" + pw + "'," + "FirstName = '"+fname+"'," + "LastName = '"+lname+"',"+ "Address ='"+address+"',"+
-            "PhoneNo = '"+phone+"',"+"Email = '"+email+"',"+
-            "Where hdUsername ='" + user + "'";
+            + "hdUsername = '" + HairdresserUser + "'," + "hdPw = '" + HairdresserPw + "'," + "FirstName = '" + HairdresserFname + "'," + "LastName = '" + HairdresserLname + "'," + "Address ='" + HairdresserAddress + "'," +
+            "PhoneNo = '" + HairdresserPhone + "'," + "Email = '" + HairdresserEmail + "'," +
+            "Where ID ='" + HairdresserId + "'";
             
             System.out.println(sql);
             System.out.println("Data set");
@@ -195,8 +201,9 @@ public class HairDresser {
                 System.out.println(e1);
             }
     } // End updateDB()
+        */
+    
         
-    /*    
     public void updateDB() {
         
         
@@ -215,7 +222,7 @@ public class HairDresser {
                                                 "Email = '"+getHairdresserEmail()+"',"+
                     
                                                 "hdPw = '"+getHairdresserPw() + "' " +
-                                                "Where hdUsername ='"+getHairdresserUser()+"'";
+                                                "Where ID ='"+getHairdresserId()+"'";
             
             System.out.println(sql);
             System.out.println("Data set");
@@ -231,7 +238,7 @@ public class HairDresser {
                 System.out.println(e1);
             }
     } // End updateDB()
-    */
+    
         
      /*****************************************************
      * Getters & Setters

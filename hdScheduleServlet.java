@@ -6,6 +6,7 @@
 package Servlets;
 
 import BusinessObjects.HairDresser;
+import BusinessObjects.Schedule;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -50,47 +51,132 @@ public class hdScheduleServlet extends HttpServlet {
             if (value.equals(mbtn)){
             
             }*/
-            String y = "True";
-            String n = "False";
-            String casValue = request.getParameter("mtb");
-            String createTable = "createTable";
-            String updateAvailability = "update";
-            //create***************************
-           if (casValue.equals(createTable)){
-                String id,username, pw;
+            //Strings**************************
+            String value = request.getParameter("button");
+            String insert = "casInsert";
+            String lookup = "Lookup";
+            String delete = "casDelete";
+            String uconstant = "casUpdate";
+            //String 
+            String[] update = new String[10];
+            int count;
+            int index =-1;
+            for (count =0;count<10;count++){
+            update [count] =uconstant+count;
+            if (update[count].equals(value)) {
+            index = count;
+            }  }
+            out.println(index); 
+            
+            //hd properties
+            String id,username, pw;
                 String fname, lname, address, phone
                         , email, timeOff;
                 boolean fullTime;
                 int hReq, hGiv;
                 Double pr;
-                id = request.getParameter("idTb");
-                fname= "fname";
-                lname= "lname";
-                address= "address";
-                phone= "404 770 6498";
-                email= "email@gmail.com";
-                fullTime= true;
-                timeOff= "TW";
-                hReq= 24;
-                hGiv= 24;
-                pr= 12.0;
-                username = fname + lname;
-                pw= lname + id;
                 
-                //
+                //schedule properties
+                String empId, empFname, empLname;
+                boolean m,t,w,r,f,s,z;
                 
+            //UPDATE&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+            if (value.equals(uconstant+index)) {
+                //step 1
+                /*empId = request.getParameter("id2");
+                m= Boolean.parseBoolean(request.getParameter("m2"));
+                t= Boolean.parseBoolean(request.getParameter("t2"));
+                w= Boolean.parseBoolean(request.getParameter("w2"));
+                r= Boolean.parseBoolean(request.getParameter("r2"));
+                f= Boolean.parseBoolean(request.getParameter("f2"));
+                s= Boolean.parseBoolean(request.getParameter("s2"));
+                z= Boolean.parseBoolean(request.getParameter("z2"));
+                System.out.println("sid retrieved = " + empId);*/
+
+                empId = request.getParameter("sidtb"+index);
+                m= Boolean.parseBoolean(request.getParameter("mtb"+index));
+                t= Boolean.parseBoolean(request.getParameter("ttb"+index));
+                w= Boolean.parseBoolean(request.getParameter("wtb"+index));
+                r= Boolean.parseBoolean(request.getParameter("rtb"+index));
+                f= Boolean.parseBoolean(request.getParameter("ftb"+index));
+                s= Boolean.parseBoolean(request.getParameter("stb"+index));
+                z= Boolean.parseBoolean(request.getParameter("ztb"+index));
+
+                // Step #2 - get any objects out of the Session using getAttribute() 
+                // no objects in Session needed for this Example
+                //Step #3 - Create any Objects needed to lookup a Student
+                Schedule us1;
+                us1 = new Schedule();
+
+                us1.selectDB(empId);
+                System.out.println("FName =" + us1.getFirstName());
+
+                //Step #4 - Make any decisions necessary
+                us1.setMonday(m);
+                us1.setTuesday(t);
+                us1.setWednesday(w);
+                us1.setThursday(r);
+                us1.setFriday(f);
+                us1.setSaturday(s);
+                us1.setSunday(z);
+                us1.updateDB();
+                //Step #5 - Put Student Object in Session using HttpSession
+                HttpSession ses1;
+                ses1 = request.getSession();
+                ses1.setAttribute("us1", us1);
+                System.out.println("Update sending x to cas.jsp");
+                /*
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet hdScheduleServlet</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Id: " + us1.getEmpId()+", booleans: "+ us1.isMonday() + "</h1>");
+                out.println("</body>");
+                out.println("</html>");
+                */
+                //Step #6 - Use RequestDispatcher to forward to JStudentLookup.jsp
+                RequestDispatcher rd = request.getRequestDispatcher("cas.jsp");
+                rd.forward(request, response);
             }
-            //update***************************
-            if (casValue.equals(updateAvailability)){
+            //INSERT***************************
+           if (value.equals(insert)){
+                /*String id,username, pw;
+                String fname, lname, address, phone
+                        , email, timeOff;
+                boolean fullTime;
+                int hReq, hGiv;
+                Double pr;*/
+                id = request.getParameter("casIdtb3");
+                fname = request.getParameter("casFnameTb3");
+                lname = request.getParameter("casLnameTb3");
+                Schedule is1 = new Schedule();
+                is1.setEmpId(id);
+                is1.insertDB(id,fname,lname);
+                System.out.println(is1+" has been added to the list");
+                //set the values of k1 to the ones we just added
+                
+                //Step 5
+                HttpSession ses1;
+                ses1 = request.getSession();
+                ses1.setAttribute("is1", is1);
+                System.out.println("HairDresser added to Session/scheduling cas.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("cas.jsp");
+                rd.forward(request, response);
+                System.out.println("Add to schedule complete, back to cas.jsp");
+            }
+            //LOOKUP***************************
+            if (value.equals(lookup)){
             //second initialize placeholder variables
-            String id,username, pw;
+            /*String id,username, pw;
             String fname, lname, address, phone
            , email, timeOff;
             boolean fullTime;
             int hReq, hGiv;
-            Double pr;
+            Double pr;*/
             //third get the parameters from the user
-            id = request.getParameter("idTb3");
+            id = request.getParameter("casIdtb3");
             //third instanciate a new hairdresser object
             HairDresser L1 = new HairDresser();
             //last perform a db function
@@ -100,13 +186,36 @@ public class hdScheduleServlet extends HttpServlet {
             HttpSession ses1;
             ses1 = request.getSession();
             ses1.setAttribute("L1", L1);
-            System.out.println("HairDresser added to Session/scheduling HdManager.jsp");
+            System.out.println("HairDresser added to Session/scheduling cas.jsp");
             
-            RequestDispatcher rd = request.getRequestDispatcher("hdManager.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("cas.jsp");
                 rd.forward(request, response);
-                System.out.println("Sending back to hdManager.jsp");
+                System.out.println("Lookup complete, back to cas.jsp");
             }
+            //DELETE***************************
+            if (value.equals(delete)){
+            //second initialize placeholder variables
+            //String id;
+            //third get the parameters from the user
+            id = request.getParameter("casIdtb3");
+            //get any objects out of the session
+            request.getAttribute("casIdtb3");
+            //third instanciate a new schedule object
+            Schedule ds1 = new Schedule();
+            //last perform a db function
+            ds1.selectDB(id);
+            System.out.println(ds1+" has been added to the list");
+            ds1.deleteDB();
+            System.out.println(ds1+" has been deleted from list");
+            HttpSession ses1;
+            ses1 = request.getSession();
+            ses1.setAttribute("ds1", ds1);
+            System.out.println("Deleted schedule from db sending object to cas.jsp");
             
+            RequestDispatcher rd = request.getRequestDispatcher("cas.jsp");
+                rd.forward(request, response);
+                System.out.println("Delete complete back to cas.jsp");
+            }
             
             /*out.println("<!DOCTYPE html>");
             out.println("<html>");

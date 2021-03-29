@@ -1,0 +1,133 @@
+<%-- 
+    Document   : cas
+    Created on : Feb 16, 2021, 1:09:44 AM
+    Author     : renel
+--%>
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="BusinessObjects.HairDresser"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="adminprofile.css">
+    <title>CAS</title>
+	<%
+            HairDresser hd1 = new HairDresser();
+            HairDresser k2;
+                //hd1 = (HairDresser) session.getAttribute("k1");
+               ArrayList<HairDresser> bList = new ArrayList<HairDresser>();
+               k2 = (HairDresser) session.getAttribute("L1");
+               bList = hd1.getAllHairDressers();
+               if (k2!=null){
+               out.println(k2.getHairDresserId());
+               //out.println("Test");
+               //bList.add(k2);
+               }               
+                int listSize = HairDresser.getCount();
+                out.println(listSize);
+                HairDresser[] b = new HairDresser[listSize];
+                
+                for (int count=0;count<listSize;count++){
+                    b[count] = bList.get(count);
+                    out.println(b[count].getHairDresserFname());
+                }
+        %>
+</head>
+
+<header>
+    <div class="container">
+      <a href="admin.html"><img src="../logo3.jpg" alt="logo" class="logo"></a>
+
+      <center>
+	  <nav>
+        <ul>
+          <li><a href="admin.html">Home</a></li>
+          <li><a href="makeschedule.html">Make Schedule</a></li><br><br>
+          <li><a href="managehire.html">Manage New Hire</a></li>
+          <li>
+			<div class="dropdown">
+				<button class="dropbtn">Profile</button>
+				<div class="dropdown-content">
+					<a href="adminprofile.html">My Profile</a>
+					<a href="">Log Out</a>
+				</div>
+			</div>
+		  </li><br><br>
+        </ul>
+      </nav>
+	  </center>
+    </div>
+</header>
+
+<body>
+   <div class="main">
+	 <br>
+        <h1 style="text-align:center;">Team Scheduling</h1>
+        <h2 style="padding-left: 50px;">Current Schedule:</h2>
+        <center>
+		<form>
+		<div class="limiter">
+			<div class="container-table100">
+				<div class="wrap-table100">
+					<div class="table100">
+						<table>
+							<thead>
+								<tr class="table100-head">
+									<th class="column18">Employee:</th>
+									<th class="column19">Mon</th>
+									<th class="column20">Tue</th>
+									<th class="column21">Wed</th>
+									<th class="column22">Thu</th>
+									<th class="column23">Fri</th>
+									<th class="column24">Sat</th>
+									<th class="column25">Sun</th>
+								</tr>
+							</thead>
+								<% for(int row=0; row < listSize; row++) { %>
+							
+							<tbody>
+								<tr>
+									<td class="column18"><%= b[row].getHairDresserId()%></td>
+									<td><input class="column19" name="mtb" type ="text" value='<%= b[row].getTimeOff().contains("Mon")%>'></td>
+									<td><input class="column20" name="ttb" type ="text" value='<%= b[row].getTimeOff().contains("Tue")%>'></td>
+									<td><input class="column21" name="wtb" type ="text" value='<%= b[row].getTimeOff().contains("Wed")%>'></td>
+									<td><input class="column22" name="rtb" type ="text" value='<%= b[row].getTimeOff().contains("Thu")%>'></td>
+									<td><input class="column23" name="ftb" type ="text" value='<%= b[row].getTimeOff().contains("Fri")%>'></td>
+									<td><input class="column24" name="stb" type ="text" value='<%= b[row].getTimeOff().contains("Sat")%>'></td>
+									<td><input class="column25" name="ztb" type ="text" value='<%= b[row].getTimeOff().contains("Sun")%>'></td>
+									
+									<!--
+										<td>2001</td>
+										<td><button name="casBtn" type ="text" value="mbtn">true</button></td>
+										<td><button name="casBtn" type ="text"><%= "a1.getTimeOff().indexOf('M')"%></button></td>
+										<td><button name="casBtn" type ="text">true</button></td>
+										<td><button name="casBtn" type ="text">true</button></td>
+										<td><button name="casBtn" type ="text">true</button></td>
+										<td><button name="casBtn" type ="text">true</button></td>
+										<td><button name="casBtn" type ="text">true</button></td>
+									-->
+								</tr>
+								<% } %>
+							</tbody>
+						</table>
+							<br>
+					</div>
+				</div>
+			</div>
+		</div>
+            <br>
+			<center><button type="submit" name="casBtn" value="CreateTable" style="cursor:pointer">Create Schedule</button></center>
+        </form>
+		</center>
+            
+        <h2 style="padding-left:50px;">Update availability:</h2>
+		
+		<p>
+        <a href="AdminLanding.jsp">To Landing</a>
+        <a href="hdManager.jsp">To Hair Dresser Manager</a>
+        </p>
+</div>
+</body>
+</html>

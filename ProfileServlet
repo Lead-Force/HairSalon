@@ -71,9 +71,20 @@ public class ProfileServlet extends HttpServlet {
             
             h1.selectDB(HID);
             System.out.println(h1);
-            out.println("<h1>Servlet: HID is " + h1 + "</h1>");
+            System.out.println("<h1>Servlet: HID is " + h1 + "</h1>");
             
-            // h1.updateDB("Harry", "Potter", "Dorsey Dr", "123", "hpotter@gmail.com");
+            h1.setHairdresserId(HID);
+            h1.setHairdresserUser(HUser);
+            h1.setHairdresserPw(HPass); 
+            h1.setHairdresserFname(FirstName);
+            h1.setHairdresserLname(LastName);
+            h1.setHairdresserAddress(Address);
+            h1.setHairdresserPhone(PhoneNo);
+            h1.setHairdresserEmail(Email); 
+            h1.updateDB();
+            
+            HttpSession session = request.getSession(); 
+            h1=(HairDresser) session.getAttribute("Hairdresser");
             
             /* TODO output your page here. You may use following sample code */
             out.println("<!DOCTYPE html>");
@@ -82,18 +93,17 @@ public class ProfileServlet extends HttpServlet {
             out.println("<title>Servlet ProfileServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProfileServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Session Name: " + request.getSession() + "</h1>");
-            out.println("<h1>Servlet: Hairdresser ID from JSP: " + HID + "</h1>");
-            out.println("<h1>Servlet: Hairdresser PW from JSP: " + HPass + "</h1>");
-            out.println("<h1>Servlet: Hairdresser User from JSP: " + HUser + "</h1>");
-            out.println("<h1>Servlet: Hairdresser FirstName from JSP: " + FirstName + "</h1>");
-            out.println("<h1>Servlet: Hairdresser LastName from JSP: " + LastName + "</h1>");
-            out.println("<h1>Servlet: Hairdresser Email from JSP: " + Email + "</h1>");            
-            out.println("<h1>Servlet: Hairdresser Address from JSP: " + Address + "</h1>");
-            out.println("<h1>Servlet: Hairdresser PhoneNo from JSP: " + PhoneNo + "</h1>");
-            out.println("<h1>Servlet: Hairdresser Time Off from JSP: " + TimeOff + "</h1>");
-            out.println("<h1>Servlet: Hairdresser HoursRequested from JSP: " + HoursRequested + "</h1>");
+            out.println("<h1>Hairdresser Updated: </h1>");
+            // out.println("<h1>New Hairdresser ID: " + HID + "</h1>");
+            out.println("<h1>New Hairdresser PW: " + HPass + "</h1>");
+            // out.println("<h1>New Hairdresser User: " + HUser + "</h1>");
+            out.println("<h1>New Hairdresser FirstName: " + FirstName + "</h1>");
+            out.println("<h1>New Hairdresser LastName: " + LastName + "</h1>");
+            out.println("<h1>New Hairdresser Email: " + Email + "</h1>");            
+            out.println("<h1>New Hairdresser Address: " + Address + "</h1>");
+            out.println("<h1>New Hairdresser PhoneNo: " + PhoneNo + "</h1>");
+            // out.println("<h1>New Hairdresser Time Off: " + TimeOff + "</h1>");
+            // out.println("<h1>New Hairdresser Hours Requested: " + HoursRequested + "</h1>");
             out.println("</body>");
             out.println("</html>");
             

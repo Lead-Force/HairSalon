@@ -97,11 +97,20 @@ span.psw {
             %>
         
     <div class="container">
-    <label for="id"><b>New ID</b></label>
-    <input type="text" placeholder="Enter ID" name="id">    
-        
+    
+    <%-- 
     <label for="user"><b>New Username</b></label>
     <input type="text" placeholder="Enter Username" name="user" required>
+      
+    <label for="timeoff"><b>New Time Off</b></label>
+    <input type="text" placeholder="Enter Time Off" name="timeoff">
+    
+    <label for="hoursrequested"><b>New Hours Requested</b></label>
+    <input type="text" placeholder="Enter Hours Requested" name="hoursrequested">
+    --%>  
+    
+    <label for="id"><b>Current ID</b></label>
+    <input type="text" placeholder="Enter ID" name="id" required>    
 
     <label for="psw"><b>New Password</b></label>
     <input type="text" placeholder="Enter Password" name="psw">
@@ -120,12 +129,6 @@ span.psw {
     
     <label for="phone"><b>New Phone Number</b></label>
     <input type="text" placeholder="Enter Phone Number" name="phone">
-    
-    <label for="timeoff"><b>New Time Off</b></label>
-    <input type="text" placeholder="Enter Time Off" name="timeoff">
-    
-    <label for="hoursrequested"><b>New Hours Requested</b></label>
-    <input type="text" placeholder="Enter Hours Requested" name="hoursrequested">
     
     <button type="submit">Change Info</button>
     </div>

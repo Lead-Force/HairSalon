@@ -20,12 +20,12 @@ public class Appointment {
     
     //Properties
     String ApptID,CustID, TimeDays;
-    String EmpID, Recurring, ServiceID, AUser, APass;
+    String EmpID, Recurring, ServiceID, AUser/*, APass*/;
     private static int rawdb;
     public static ArrayList<Appointment> AppointmentList = new ArrayList<>();
     
     //Constructor that passes all arguments
-    public Appointment(String ApptID, String CustID, String TimeDays, String EmpID, String Recurring, String ServiceID, String AUser, String APass){
+    public Appointment(String ApptID, String CustID, String TimeDays, String EmpID, String Recurring, String ServiceID, String AUser/*, String APass*/){
         this.ApptID = ApptID;
         this.CustID = CustID;
         this.TimeDays= TimeDays;
@@ -33,7 +33,7 @@ public class Appointment {
         this.Recurring = Recurring;
         this.ServiceID = ServiceID;
         this.AUser = AUser;
-        this.APass = APass;
+        /*this.APass = APass;*/
     }
     
     //Constructor that passes no arguments
@@ -45,7 +45,7 @@ public class Appointment {
       this.Recurring = null;
       this.ServiceID = null;
       this.AUser = null;
-      this.APass = null;
+      /*this.APass = null;*/
     }
     
             public static void main(String [] args) throws ClassNotFoundException, SQLException{
@@ -69,7 +69,7 @@ public class Appointment {
             // a2 = (Appointment) session.getAttribute("L1");
             a2 = null;
            
-            
+            System.out.println("Starting List.getAllAppointments");
             cList = a1.getAllAppointments();
                if (a2!=null){
                System.out.println(a1.getCustID());
@@ -81,10 +81,14 @@ public class Appointment {
                 System.out.println("List size is: " + listSize);
                 Appointment[] b = new Appointment[listSize];
                 
+                System.out.println("Starting For Loop");
+                System.out.println("Appointment List: ");
                 for (int count=0;count<listSize;count++){
                     b[count] = cList.get(count);
                     System.out.println(b[count].getCustID());
+                //System.out.println("End of For Loop / End Appointments");
                 }//end Appointment******************************           
+                System.out.println("End of For Loop / End Appointments");
         }
             
         //This is a static arrayList that gets Appointments from getallAppointments method
@@ -110,8 +114,8 @@ public class Appointment {
             rst.getString(3),
             rst.getString(4),
             rst.getString(5),
-            rst.getString(6),
-            rst.getString(7));
+            rst.getString(6));
+            //rst.getString(7));
             // rst.getBoolean(8),        
             //rst.getString(8);
             //rst.getString(9);
@@ -164,7 +168,7 @@ public class Appointment {
                     + "Recurring: " + Recurring
                     + "ServiceID: " + ServiceID 
                     + "AUser" + AUser 
-                    + "APass:" + APass);            
+                    /*+ "APass:" + APass*/);            
         }
         
     public void selectDB(String i) {
@@ -190,7 +194,7 @@ public class Appointment {
             Recurring = rs.getString(5);
             ServiceID = rs.getString(6);
             AUser = rs.getString(7);
-            APass = rs.getString(8);
+            //APass = rs.getString(8);
             System.out.println("Connected to the SelectDB is Successfull!!!");
             c1.close();
         } catch (Exception se) {
@@ -200,7 +204,7 @@ public class Appointment {
     } //end selectDB()
     
     //insertDB
-        public boolean insertDB(String ApptID, String CustID, String TimeDays, String EmpID, String Recurring, String ServiceID, String AUser, String APass){
+        public boolean insertDB(String ApptID, String CustID, String TimeDays, String EmpID, String Recurring, String ServiceID, String AUser/*, String APass*/){
         //assign values
         setApptID(ApptID);
         setCustID(CustID);
@@ -209,7 +213,7 @@ public class Appointment {
         setRecurring(Recurring);
         setServiceID(ServiceID);
         setAUser(AUser);
-        setAPass(APass);
+        //setAPass(APass);
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection conn = DriverManager.getConnection
@@ -226,7 +230,7 @@ public class Appointment {
                                                       "'"+getRecurring() + "', " +
                                                         "'"+getServiceID()+"', "+
                                                         "'"+getAUser()+"', "+
-                                                        "'"+getAPass()+"' "+
+                                                        //"'"+getAPass()+"' "+
 ")"; 
             //print the stAtement
             System.out.println(sql2);
@@ -298,7 +302,7 @@ public class Appointment {
                                                 "Recurring = '"+getRecurring()+"',"+
                                                 "ServiceID = '"+getServiceID()+"',"+
                     
-                                                "APass = '"+getAPass() + "' " +
+                                                //"APass = '"+getAPass() + "' " +
                                                 "Where ApptID ='"+getAUser()+"'";
             System.out.println(sql4);
             System.out.println("Data set");
@@ -322,7 +326,7 @@ public class Appointment {
         public String getRecurring() {return Recurring;}
         public String getServiceID() {return ServiceID;}
         public String getAUser() {return AUser;}
-        public String getAPass() {return APass;}
+        //public String getAPass() {return APass;}
             
         //Setters
         public void setApptID (String ApptID) {this.ApptID = ApptID;}
@@ -332,5 +336,5 @@ public class Appointment {
         public void setRecurring(String Recurring) {this.Recurring = Recurring;}
         public void setServiceID(String ServiceID) {this.ServiceID = ServiceID;}
         public void setAUser(String AUser) {this.AUser = AUser;}
-        public void setAPass(String APass) {this.APass = APass;}
+        //public void setAPass(String APass) {this.APass = APass;}
     }

@@ -19,7 +19,9 @@ package BusinessObjects;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 // Hairdresser class
 public class HairDresser {
@@ -27,11 +29,15 @@ public class HairDresser {
     // Properties
     String HairdresserId, HairdresserUser, HairdresserPw;
     String HairdresserFname, HairdresserLname, HairdresserAddress, HairdresserPhone, HairdresserEmail;
-    Boolean FullTime; 
+    // Boolean FullTime; 
+    String FullTime; 
     String TimeOff, HoursRequested, HoursGiven; 
     Double PayRate;
+    private static int rawdb;
+    public static ArrayList<HairDresser> customerList = new ArrayList<>();
     
-    public HairDresser(String HairdresserId, String HairdresserUser, String HairdresserPw, String HairdresserFname, String HairdresserLname, String HairdresserAddress, String HairdresserPhone, String HairdresserEmail, Boolean FullTime, String TimeOff, String HoursRequested, String HoursGiven, Double PayRate) {
+    // Constructor that passes all arguments
+    public HairDresser(String HairdresserId, String HairdresserUser, String HairdresserPw, String HairdresserFname, String HairdresserLname, String HairdresserAddress, String HairdresserPhone, String HairdresserEmail, String FullTime, String TimeOff, String HoursRequested, String HoursGiven, Double PayRate) {
         this.HairdresserId = HairdresserId;
         this.HairdresserUser = HairdresserUser;
         this.HairdresserPw = HairdresserPw;
@@ -57,7 +63,7 @@ public class HairDresser {
         this.HairdresserAddress = null;
         this.HairdresserPhone = "0";
         this.HairdresserEmail = null;
-        this.FullTime = false;
+        this.FullTime = null;
         this.TimeOff = null;
         this.HoursRequested = "0";
         this.HoursGiven = "0";
@@ -65,7 +71,7 @@ public class HairDresser {
     }
     
             // Main constructor
-            public static void main(String [] args){
+            public static void main(String [] args) throws ClassNotFoundException, SQLException{
             // Test Instanciating a Hairdresser object
             // HairDresser c1 = new HairDresser(/*"3001", "1234", "Peter", "Frampton", "123 Main St", "pframp@gmail.com"*/);
             // h1.selectDB("2003");
@@ -85,7 +91,7 @@ public class HairDresser {
             //hd1.displayHairDresser();
             //hd1.displayHairDresser();
             
-            //Test InstAnciating a Admin object
+            //Test InstAnciating a Hairdresser object
             HairDresser h1 = new HairDresser();
             h1.selectDB("2001");
             // h1.setHairdresserFname("Ron");
@@ -107,12 +113,102 @@ public class HairDresser {
             // h1.display();
             //int pwdb = c2.getAdminPw();
             //System.out.println("Password for user:" + pwdb );
+            
+            // Get All Hair Dressers method inside Main()
+            HairDresser hd1 = new HairDresser();
+            HairDresser k2;
+            ArrayList<HairDresser> bList = new ArrayList<HairDresser>();
+            // k2 = (HairDresser) session.getAttribute("L1");
+            k2 = null;
+           
+            bList = hd1.getAllHairDressers();
+               if (k2!=null){
+               //out.println(k2.getHairDresserId());
+               //out.println("Test");
+               //bList.add(k2);
+               }               
+                int listSize = HairDresser.getCount();
+                System.out.println(listSize);
+                HairDresser[] b = new HairDresser[listSize];
+                
+                for (int count=0;count<listSize;count++){
+                    b[count] = bList.get(count);
+                    System.out.println(b[count].getHairdresserLname());
+                }//end hairdresser****************************** 
         }
             
         // Display method
         public void displayHairdresser(){
             System.out.println("ID: " + HairdresserId + " User: " + HairdresserUser + " Password: " + HairdresserPw + " First Name: " + HairdresserFname + " Last Name: " + HairdresserLname + " Address: " + HairdresserAddress + " Phone Number: " + HairdresserPhone + " Email: " + HairdresserEmail + "Full Time: " + FullTime + " Time Off: " + TimeOff + " Hours Requested: " + HoursRequested + " Hours Given: " + HoursGiven + " Pay Rate: " + PayRate);   
         }
+        
+        //This is a static arrayList that gets hairdressers from getallhairdressers method
+        public static ArrayList<HairDresser> getAllHairDressers() throws ClassNotFoundException, SQLException {
+            try {    
+            // Load DB Driver
+                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://" +
+                "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
+                System.out.println("Database is connected");
+
+            //Execute SQL StAtement
+            Statement stmt = c1.createStatement();
+            ResultSet rst = stmt.executeQuery("Select * from Hairdresser2 ");
+            System.out.println("executingquery");
+            //Process ResultSet
+
+            while (rst.next()) {
+            HairDresser hairdresser = new HairDresser(
+            rst.getString("ID"),
+            rst.getString(1),
+            rst.getString(2),
+            rst.getString(3),
+            rst.getString(4),
+            rst.getString(5),
+            rst.getString(6),
+            rst.getString(7),
+            // rst.getBoolean(8),        
+            rst.getString(8),
+            rst.getString(9),
+            // rst.getInt(10),
+            // rst.getInt(11),
+            rst.getString(10),
+            rst.getString(11),
+            rst.getDouble(12));
+        customerList.add(hairdresser);
+    }
+    
+    }catch (Exception se) {
+            System.out.println(se);
+        }
+        return customerList;
+        }
+        
+        public static int getCount(){
+            try {
+            // Load DB Driver
+                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://" +
+                "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
+                System.out.println("Database is connected");
+
+            //Execute SQL StAtement
+            Statement stmt = c1.createStatement();
+            ResultSet rs = stmt.executeQuery("Select count(*) from Hairdresser2");
+            System.out.println("executingquery");
+            //Process ResultSet
+            
+            
+            rs.next();
+            rawdb =rs.getInt(1);
+           System.out.println(rawdb);
+            
+               c1.close();
+        } catch (Exception se) {
+            System.out.println(se);
+        }
+        return rawdb;
+        }    
         
         // Select database method
         public void selectDB(String i) {
@@ -276,7 +372,7 @@ public class HairDresser {
         this.HairdresserPhone = HairdresserPhone;
     }
 
-    public void setFullTime(Boolean FullTime) {
+    public void setFullTime(String FullTime) {
         this.FullTime = FullTime;
     }
 
@@ -328,7 +424,7 @@ public class HairDresser {
         return HairdresserPhone;
     }
 
-    public Boolean getFullTime() {
+    public String getFullTime() {
         return FullTime;
     }
 

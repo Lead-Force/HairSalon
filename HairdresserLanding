@@ -94,6 +94,7 @@ span.psw {
             
             <%  session = request.getSession();
             HairDresser h1 = (HairDresser)(session.getAttribute("Hairdresser"));
+            //System.out.println(Hairdresser.display());
             %>
         
     <div class="container">
@@ -131,6 +132,58 @@ span.psw {
     <input type="text" placeholder="Enter Phone Number" name="phone">
     
     <button type="submit">Change Info</button>
+    </div>
+    </form>
+    </body>
+    
+    <body>
+        <h1>Welcome to the Display Page</h1>
+        <h2>Display Appointments</h2>
+        
+        <label for="CustID"><b>Enter CustID</b></label>
+        <input type="text" placeholder="Enter CustID" name="CustID">
+        <form action= "DisplayServlet">
+        <button type="submit" <!--name="DisplayServlet"--> >Display Appointments</button>
+        
+        
+        <!-- This is a comment
+        <form action= "DisplayServlet">
+        <h2>Display Customers</h2>
+        <button type="submit" name="DisplayCust">Display Customers</button>
+        <form action= "DisplayServlet">
+        <h2>Display Customer's Appointments</h2>
+        <button type="submit" name="DisplayCustAppt">Display Customer's Appointments</button>
+        <form action= "DisplayServlet">
+         -->
+            
+        <%--//hair dresser code for availability************************
+            HairDresser hd1 = new HairDresser();
+            HairDresser k2;
+            ArrayList<HairDresser> bList = new ArrayList<HairDresser>();
+            k2 = (HairDresser) session.getAttribute("L1");
+            
+            bList = hd1.getAllHairDressers();
+               if (k2!=null){
+               //out.println(k2.getHairDresserId());
+               //out.println("Test");
+               //bList.add(k2);
+               }               
+                int listSize = HairDresser.getCount();
+                out.println(listSize);
+                HairDresser[] b = new HairDresser[listSize];
+                
+                for (int count=0;count<listSize;count++){
+                    b[count] = bList.get(count);
+                    //out.println(b[count].getHairDresserFname());
+                }//end hairdresser******************************
+        --%>
+            
+            <%--session = request.getSession();
+            HairDresser h1 = (HairDresser)(session.getAttribute("Hairdresser"));
+            --%>
+        
+    <div class="container">
+
     </div>
 
     </form>

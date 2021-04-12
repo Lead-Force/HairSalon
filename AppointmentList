@@ -1,0 +1,93 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package BusinessObjects;
+
+/**
+ *
+ * @author Jean
+ */
+import java.util.ArrayList;
+
+public class AppointmentList {
+    int numberOfAppointments;//var used to counts # of accts in list
+    
+    public ArrayList<Appointment> appointment = new ArrayList<>();
+    
+
+    public void addAppointment(Appointment a1) {
+        appointment.add(a1);
+        
+        numberOfAppointments = appointment.size();//get the size of our list   
+    }
+    
+    /** display the accounts */
+    public void displayList() {
+        Appointment app;
+        for(int i = 0; i <= appointment.size() - 1; i++) {
+            app = appointment.get(i); 
+            app.display();
+        }
+        
+        System.out.println("number of Accounts in list: " + numberOfAppointments);
+    }
+    
+    public static void main(String[] args) {
+        AppointmentList alist = new AppointmentList();
+        
+            Appointment a = new Appointment("Apt512", "3/31/2021", "3:30 PM", "2323", "John Doe", "Hair Cut", "Straight Cut");
+            Appointment b = new Appointment("Apt788", "3/31/2021", "3:30 PM", "2323", "John Doe", "Hair Cut", "Straight Cut");
+            Appointment c = new Appointment("Apt910", "3/31/2021", "3:30 PM", "2323", "John Doe", "Hair Cut", "Straight Cut");
+        
+          
+            alist.addAppointment(a);
+            alist.addAppointment(b);
+            alist.addAppointment(c);
+//        
+//       Account a = new Account("7777", "3001", "SAV", "$500.00");
+//	 Account b = new Account("8888", "3006", "MMA", "$500.00");
+//        
+//        alist.addAccount(a);
+//        alist.addAccount(b);
+//
+        alist.displayList();
+
+    }
+}
+
+/*
+public class HairDresserList {
+//======== Properties =========
+public int count;  //the number of HairDressers in the list
+public HairDresser hdArr[] = new HairDresser[13];   //the list
+
+public int getCount(){
+    return count;
+}
+//methods
+public void addHairDresser(HairDresser a1){
+    hdArr[count]=a1;
+    count++;
+}
+
+public void displayList(){
+    for(int x=0; x< count; x++){
+        hdArr[x].displayHairdresser();
+    }
+}
+*/
+
+//main method
+/*
+public static void main(String args[]){
+    HairDresserList hdlist = new HairDresserList()  
+    HairDresser a = new HairDresser("2001","JUsename","Dpw","J","D","123 main st","404404","email@email.com", "TW", "40","40","40",14.0);
+    HairDresser b = new HairDresser();
+    b.selectDB("2001");
+    hdlist.addHairDresser(a);
+    hdlist.addHairDresser(b);
+    
+    hdlist.displayList();
+*/

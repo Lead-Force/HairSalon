@@ -118,8 +118,6 @@ public class HDLoginServlet extends HttpServlet {
                 out.println("<h1>Invalid Login!</h1>");
             }
             
-            
-                
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -134,7 +132,6 @@ public class HDLoginServlet extends HttpServlet {
             // out.println("<h1>dbPw: " + dbPw + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
         }
     }
 

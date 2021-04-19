@@ -1,273 +1,244 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package BusinessObjects;
 
-// Imports
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import static BusinessObjects.Appointment.AppointmentList;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.List;
 
-// Appointment class               
+/**
+ *
+ * @author renel
+ */
 public class Appointment {
+      //properties
+    String AptTime, CustID, HdAptID;
+    boolean Taken; 
+    String Week, AptDays, Service, Reserved;
     
-    //Properties
-    String ApptID,CustID, TimeDays;
-    String EmpID, Recurring, ServiceID, AUser/*, APass*/;
-    private static int rawdb;
-    public static ArrayList<Appointment> AppointmentList = new ArrayList<>();
-    
-    //Constructor that passes all arguments
-    public Appointment(String ApptID, String CustID, String TimeDays, String EmpID, String Recurring, String ServiceID, String AUser/*, String APass*/){
-        this.ApptID = ApptID;
-        this.CustID = CustID;
-        this.TimeDays= TimeDays;
-        this.EmpID = EmpID;
-        this.Recurring = Recurring;
-        this.ServiceID = ServiceID;
-        this.AUser = AUser;
-        /*this.APass = APass;*/
-    }
-    
+    //array to store schedule objects
+        public static ArrayList<Appointment> HDAppointmentList = new ArrayList<>();
+        //array to store how many records are in the schedule
+        public static List rowValues = new ArrayList();
+        //property to store raw database count
+        private static int rawAppointmentDBCount;
     //Constructor that passes no arguments
     public Appointment(){
-      this.ApptID = null;
-      this.CustID = null; 
-      this.TimeDays = null; 
-      this.EmpID = null; 
-      this.Recurring = null;
-      this.ServiceID = null;
-      this.AUser = null;
-      /*this.APass = null;*/
+        AptTime = null;
+        CustID = null;
+        HdAptID = null;
+        Taken = false;
+        Week = null;
+        AptDays = null;
+        Service = null;
+        Reserved = null;
+    }
+
+    //Constructors that passes all arguments
+    public Appointment(String AptTime, String CustID, String HdAptID, boolean Taken, String Week, String AptDays, String Service, String Reserved) {
+        this.AptTime = AptTime;
+        this.CustID = CustID;
+        this.HdAptID = HdAptID;
+        this.Taken = Taken;
+        this.Week = Week;
+        this.AptDays = AptDays;
+        this.Service = Service;
+        this.Reserved = Reserved;
     }
     
-            public static void main(String [] args) throws ClassNotFoundException, SQLException{
-            System.out.println("Inside Appointment.java Business Object Main Method");
-            //Test InstAnciating a Admin object
-            Appointment c1 = new Appointment();
-            c1.selectDB("Appt281");
-            //c1.insertDB("8787", "Jessica", "Smith", "10 Hems Mansion","123-456-7789", "JS@gmail.com", "JessicaS", "Smith33");
-            //c1.deleteDB("8787");
-            //c1.selectDB("BenS");
-            //c1.setCustID("Jinny");
-            //c1.updateDB();
-            //Display
-            c1.display();
-            //int pwdb = c2.getAdminPw();
-            //System.out.println("Password for user:" + pwdb );
-            // Get All Hair Dressers method inside Main()
-            Appointment a1 = new Appointment(/*rst.getString("ID"), rst.getString(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDouble(12)*/);
-            Appointment a2;
-            ArrayList<Appointment> cList = new ArrayList<Appointment>();
-            // a2 = (Appointment) session.getAttribute("L1");
-            a2 = null;
-           
-            System.out.println("Starting List.getAllAppointments");
-            cList = a1.getAllAppointments();
-               if (a2!=null){
-               System.out.println(a1.getCustID());
-               System.out.println(a2.getCustID());
-               //out.println("Test");
-               //bList.add(a2);
-               }               
-                int listSize = Appointment.getCount();
-                System.out.println("List size is: " + listSize);
-                Appointment[] b = new Appointment[listSize];
-                
-                System.out.println("Starting For Loop");
-                System.out.println("Appointment List: ");
-                for (int count=0;count<listSize;count++){
-                    b[count] = cList.get(count);
-                    System.out.println(b[count].getCustID());
-                //System.out.println("End of For Loop / End Appointments");
-                }//end Appointment******************************           
-                System.out.println("End of For Loop / End Appointments");
-        }
+    public static void main(String [] args) throws ClassNotFoundException, SQLException{
+            //Test InstAnciating a Customer object
+            Appointment a1 = new Appointment();
+            //s1.getAllAppointment();
             
-        //This is a static arrayList that gets Appointments from getallAppointments method
-        public static ArrayList<Appointment> getAllAppointments() throws ClassNotFoundException, SQLException {
-            try {    
-            // Load DB Driver
-                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-                Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://" +
-                "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
-                System.out.println("Database is connected");
+            a1.selectDB("9002");
+            //a1.insertDB("11", "2010", "2323", "9003", true, "18", "W", "Nail Service", "B");
+            //a1.deleteDB("9003");
+//            a1.updateDB();
+            a1.display();
+            
+    }
+    //display method
+    public void display(){
+        System.out.println("AptTime: " + AptTime + " CustID: " + CustID 
+                + " HdAptID: " + HdAptID  + " Taken: " + Taken + " Week:" + Week + " AptDays: " + AptDays + " Service: " + Service + " Reserved:" +Reserved);
+    }
+    
+    //This is a static arrayList that gets hairdressers from getallhairdressers method
+        public static ArrayList<Appointment> getAllAppointment() throws ClassNotFoundException, SQLException {
+     try {    
+//Load DB Driver
+            Class.forName(Strings.driver);
+            Connection c1 = DriverManager.getConnection(Strings.url);
 
             //Execute SQL StAtement
             Statement stmt = c1.createStatement();
-            ResultSet rst = stmt.executeQuery("Select * from Appointment ");
-            System.out.println("executing GetAll query");
+            ResultSet rst = stmt.executeQuery("Select * From Appointments");
+            System.out.println("Executing get all schedlues query");
             //Process ResultSet
 
-            while (rst.next()) {
-            Appointment Appointment = new Appointment(
-            rst.getString("ApptID"),
-            rst.getString(1),
-            rst.getString(2),
-            rst.getString(3),
-            rst.getString(4),
-            rst.getString(5),
-            rst.getString(6));
-            //rst.getString(7));
-            // rst.getBoolean(8),        
-            //rst.getString(8);
-            //rst.getString(9);
-            //rst.getString(10),
-            //rst.getString(11);
-            //rst.getBoolean(12),
-            // rst.getInt(10),
-            // rst.getInt(11),
-            /*rst.getString(10),
-            rst.getString(11),
-            rst.getDouble(12));*/
-        AppointmentList.add(Appointment);
+    while (rst.next()) {
+        Appointment aa1 = new Appointment(
+            rst.getString("AptTime"),
+            rst.getString("CustID"),
+            rst.getString("HdAptID"),
+            rst.getBoolean("Taken"),
+            rst.getString("Week"),
+            rst.getString("AptDays"),
+            rst.getString("Service"),
+            rst.getString("Reserved"));
+            
+        HDAppointmentList.add(aa1);
     }
     
     }catch (Exception se) {
             System.out.println(se);
         }
-        return AppointmentList;
+        return HDAppointmentList;
         }
-        
-        public static int getCount(){
+        //DB method to count the number of records in the
+        public static int getAppointmentCount(){
             try {
-            // Load DB Driver
-                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-                Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://" +
-                "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
-                System.out.println("Database is connected");
+            //Load DB Driver
+            Class.forName(Strings.driver);
+            Connection c1 = DriverManager.getConnection(Strings.url);
 
             //Execute SQL StAtement
             Statement stmt = c1.createStatement();
-            ResultSet rs = stmt.executeQuery("Select count(*) from Appointment");
-            System.out.println("executing GetCount query");
+            ResultSet rs = stmt.executeQuery("Select count(*) From Appointments");
+            System.out.println("Executing Query to get schedule count");
             //Process ResultSet
             
             rs.next();
-            rawdb =rs.getInt(1);
-           System.out.println(rawdb);
+            rawAppointmentDBCount =rs.getInt(1);
+           System.out.println(rawAppointmentDBCount);
             
                c1.close();
         } catch (Exception se) {
             System.out.println(se);
         }
-        return rawdb;
-        }        
+        return rawAppointmentDBCount;
+        }    
+    
+    
+     //The SelectDB will grab the database informations 
+         public void selectDB(String i){
+     HdAptID=i;
+     try{
+         Class.forName(Strings.driver);
+            Connection conn = DriverManager.getConnection(Strings.url);
             
-        //display method
-        public void display(){
-            System.out.println("ApptID: " + ApptID + "CustID: " + CustID + " TimeDays: " + TimeDays 
-                    +"EmpID: " + EmpID 
-                    + "Recurring: " + Recurring
-                    + "ServiceID: " + ServiceID 
-                    + "AUser" + AUser 
-                    /*+ "APass:" + APass*/);            
-        }
-        
-    public void selectDB(String i) {
-        AUser = i;
-        try {    //Load DB Driver
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection c1 = DriverManager.getConnection("jdbc:ucanaccess://"
-                    + "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
-            System.out.println("Connected to the SelectDB");
-            //Execute SQL StAtement
-            Statement stmt = c1.createStatement();
-            String sql = "Select * From Appointment Where ApptID = '" + i + "'";
-            System.out.println(sql);
-            ResultSet rs = stmt.executeQuery(sql);
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+            String sql = ("Select * From Appointments Where HdAptID = '" + i + "'");
+//            System.out.println(sql);
+            
+            rs = stmt.executeQuery(sql);
+            
 
             //Process ResultSet
-            rs.next();
-            //adminId = rs.getString(0);
-            ApptID = rs.getString(1);
-            CustID = rs.getString(2);
-            TimeDays = rs.getString(3);
-            EmpID = rs.getString(4);
-            Recurring = rs.getString(5);
-            ServiceID = rs.getString(6);
-            AUser = rs.getString(7);
-            //APass = rs.getString(8);
-            System.out.println("Connected to the SelectDB is Successfull!!!");
-            c1.close();
-        } catch (Exception se) {
-            System.out.println(se);
-           
-        }
-    } //end selectDB()
-    
-    //insertDB
-        public boolean insertDB(String ApptID, String CustID, String TimeDays, String EmpID, String Recurring, String ServiceID, String AUser/*, String APass*/){
-        //assign values
-        setApptID(ApptID);
-        setCustID(CustID);
-        setTimeDays(TimeDays);
-        setEmpID(EmpID);
-        setRecurring(Recurring);
-        setServiceID(ServiceID);
-        setAUser(AUser);
-        //setAPass(APass);
-        try{
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection conn = DriverManager.getConnection
-                ("C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
-
-            System.out.println("Database connected"); 
-            //Create StAtement
-            java.sql.Statement stmt = conn.createStatement();
-            //update stAtement definition
-            String sql2 = "INSERT INTO Appointment values('"+getApptID()+"',"+
-                                                        "'"+getCustID()+"', "+
-                                                      "'"+getTimeDays()+"', "+
-                                                      "'"+getEmpID()+"', "+
-                                                      "'"+getRecurring() + "', " +
-                                                        "'"+getServiceID()+"', "+
-                                                        "'"+getAUser()+"', "+
-                                                        //"'"+getAPass()+"' "+
-")"; 
-            //print the stAtement
-            System.out.println(sql2);
-            //check for duplicates
-            int n1 = stmt.executeUpdate(sql2);
+           // while (rs.next()) {
+                rs.next();
+                //adminId = rs.getString(0);
+                this.AptTime = rs.getString("AptTime");
+                this.CustID = rs.getString("CustID");
+                this.HdAptID = rs.getString("HDAptID");
+                this.Taken = rs.getBoolean("Taken");
+                this.Week = rs.getString("Week");
+                this.AptDays = rs.getString("AptDays");
+                this.Service = rs.getString("Service");
+                this.Reserved = rs.getString("Reserved");
+                
+                
+            //}  
+            
             conn.close();
-            if (n1==1){
-                System.out.println("INSERT Successful!!!");
-                return true;
-            }
-            else {
-             System.out.println("INSERT FAILED***********");
-             return false;
-        }
+            
+           
+        } catch (ClassNotFoundException | SQLException se) {
+            System.out.println(se); 
+            
+           }
+    }//End SelectDB
+    
+    public void insertDB(String AptTime, String CustID, String HdAptID, boolean Taken,String Week, String AptDays, String Service, String Reserved ) {
+       
+    System.out.println("Starting the InsertDB");
+    
+    //assign values
+    setAptTime(AptTime);
+    setCustID(CustID);
+    setHdAptID(HdAptID);
+    setTaken(Taken);
+    setWeek(Week);
+    setAptDays(AptDays);
+    setService(Service);
+    setReserved(Reserved);
+           
+    try{
+        Class.forName(Strings.driver);
+        Connection conn = DriverManager.getConnection
+        (Strings.url);
+        
+        System.out.println("Database connected for the InsertDB");
+        //Create Statement
+        java.sql.Statement stmt = conn.createStatement();
+        //update Statement definition
+        String sql = "INSERT INTO Appointment69 values('"+getAptTime()+"', "+
+                                                        "'"+getCustID()+"', "+
+                                                        "'"+getHdAptID()+"', "+
+                                                        "'"+isTaken()+"', "+
+                                                        "'"+getWeek()+"', "+
+                                                        "'"+getAptDays()+"',"+
+                                                        "'"+getService()+"', "+
+                                                        "'"+getReserved()+"'"+
+")";
+        //print the statement
+        System.out.println("Insert successful");
+        System.out.println(sql);
+        //check for duplicates
+        int n1 = stmt.executeUpdate(sql);
+        conn.close();
+        if (n1==1) {
+            System.out.println("Insert Successfully!!!!!");
+            
             
         }
-        catch(Exception e1){
-            System.out.println(e1);
-            return false;
+        else {
+            System.out.println("Insert Failed!!!!");
+            
         }
-        
-        
-        }
-        
-        //DeleteDB
-        public void deleteDB(String ApptID){
+       
+  
+    }
+    catch(Exception e1){
+        System.out.println(e1);
+      
+    }
+    
+    }
+    //end of insertDB
+     
+     //DeleteDB
+        public void deleteDB(String i){
+            HdAptID=i;
             System.out.println("Ready to Delete");
                         try{
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-           java.sql.Connection con3 = DriverManager.getConnection("jdbc:ucanaccess://"
-                   + "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
+            Class.forName(Strings.driver);
+           java.sql.Connection con3 = DriverManager.getConnection(Strings.url);
             System.out.println("DatAbase connected");
             //Create StAtement - Step #3
             java.sql.Statement stmt = con3.createStatement();
 
             //Execute StAtement - Step #4
-            String sql3 = "Delete from Appointment Where ApptID = '"+ ApptID +"'"; 
+            String sql3 = "Delete from Appointment69 Where HdAptID = '"+ i +"'"; 
             //Print sql stAtement
             System.out.println(sql3);
             //check for duplicates
@@ -282,28 +253,27 @@ public class Appointment {
             System.out.println(e1);
         }
         
-        }
-        
-        
-        public void updateDB() {
-            
-            try{
-                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        }//end of deleteDB
+    
+    //UpdateDB will update the database information if you want to change any records
+    public void updateDB() {
+        try{
+                Class.forName(Strings.driver);
                 
                Connection con4 = DriverManager.getConnection
-                       ("jdbc:ucanaccess://" + "C:\\Users\\Jean\\Documents\\Systems Project\\Databases\\db.accdb");
+                       (Strings.url);
                
             System.out.println("Database Connected");
             Statement stmt = con4.createStatement();
 
-            String sql4 = "Update Appointment set CustID = '"+getCustID()+"',"+
-                                                "TimeDays = '"+getTimeDays()+"',"+
-                                                "EmpID ='"+getEmpID()+"',"+
-                                                "Recurring = '"+getRecurring()+"',"+
-                                                "ServiceID = '"+getServiceID()+"',"+
-                    
-                                                //"APass = '"+getAPass() + "' " +
-                                                "Where ApptID ='"+getAUser()+"'";
+            String sql4 = "Update Appointment69 set AptTime = '"+getAptTime()+"',"+
+                                                "CustID= '" +getCustID() + "',"+
+                                                "Taken = '" +isTaken() +"',"+
+                                                "Week = '" +getWeek() + "'," +
+                                                "AptDays = '" +getAptDays() + "',"+
+                                                "Service = '" +getService() + "',"+
+                                                "Reserved = '" +getReserved() + "'"+
+                                                "Where HdAptID ='"+getHdAptID()+"'";
             System.out.println(sql4);
             System.out.println("Data set");
             int n = stmt.executeUpdate(sql4);
@@ -317,24 +287,70 @@ public class Appointment {
                 System.out.println(e1);
             }
     
-        }//end updateDB()
-        //getters
-        public String getApptID(){return ApptID;}
-        public String getCustID(){return CustID;}
-        public String getTimeDays() {return TimeDays;}
-        public String getEmpID() {return EmpID;}
-        public String getRecurring() {return Recurring;}
-        public String getServiceID() {return ServiceID;}
-        public String getAUser() {return AUser;}
-        //public String getAPass() {return APass;}
-            
-        //Setters
-        public void setApptID (String ApptID) {this.ApptID = ApptID;}
-        public void setCustID (String CustID) {this.CustID = CustID;}
-        public void setTimeDays(String TimeDays) {this.TimeDays = TimeDays;}
-        public void setEmpID(String EmpID) {this.EmpID = EmpID;}
-        public void setRecurring(String Recurring) {this.Recurring = Recurring;}
-        public void setServiceID(String ServiceID) {this.ServiceID = ServiceID;}
-        public void setAUser(String AUser) {this.AUser = AUser;}
-        //public void setAPass(String APass) {this.APass = APass;}
+        
+    }//End UpdateDB
+    
+    public String getAptTime() {
+        return AptTime;
     }
+
+    public void setAptTime(String AptTime) {
+        this.AptTime = AptTime;
+    }
+
+    public String getCustID() {
+        return CustID;
+    }
+
+    public void setCustID(String CustID) {
+        this.CustID = CustID;
+    }
+
+    public String getHdAptID() {
+        return HdAptID;
+    }
+
+    public void setHdAptID(String HdAptID) {
+        this.HdAptID = HdAptID;
+    }
+
+    public boolean isTaken() {
+        return Taken;
+    }
+
+    public void setTaken(boolean Taken) {
+        this.Taken = Taken;
+    }
+
+    public String getWeek() {
+        return Week;
+    }
+
+    public void setWeek(String Week) {
+        this.Week = Week;
+    }
+
+    public String getAptDays() {
+        return AptDays;
+    }
+
+    public void setAptDays(String AptDays) {
+        this.AptDays = AptDays;
+    }
+
+    public String getService() {
+        return Service;
+    }
+
+    public void setService(String Service) {
+        this.Service = Service;
+    }
+
+    public String getReserved() {
+        return Reserved;
+    }
+
+    public void setReserved(String Reserved) {
+        this.Reserved = Reserved;
+    }
+}

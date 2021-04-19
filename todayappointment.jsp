@@ -4,6 +4,7 @@
     Author     : krism
 --%>
 
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="BusinessObjects.Appointment"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,7 +22,9 @@
 <%
 // Code that will get data from database and allow us to display to the JSP
     Appointment a1 = new Appointment(); 
-    // 
+    // Get the selected day/week from the Servlet
+    String week = (String)session.getAttribute("Week");
+    String day = (String)session.getAttribute("Day");
     a1.selectDB("Cust001");
     // New array list of Appointments
     ArrayList<Appointment> aList = new ArrayList<Appointment>(); 
@@ -31,6 +34,14 @@
     int listSize = a1.getAppointmentCount();
     // Create a new array that will pass info from the array list
     Appointment[] aArray = new Appointment[listSize];
+    // Iterator
+    if (week != null && day != null) {
+    for(Iterator<Appointment> iterator = aList.iterator(); iterator.hasNext(); ) {
+                            if(iterator.next().getWeek().equals(week) && iterator.next().getAptDays().equals(day));
+                            //iterator.remove();
+                            out.println("Iteration: " + iterator + ".");
+                        }
+    }
     // For loop to actually store the Appointments to the array one by one
         for (int count = 0; count < listSize; count++) {
             // Get info from normal array into array list
@@ -67,7 +78,7 @@
 <body style="overflow:auto;">
 <br><br>
 
-	<form action="http://localhost:8080/THS/BookAppointmentServlet" method="post" style="padding-top: 20px;">
+	<form action="http://localhost:8080/THS/AppointmentDateLookupServlet" method="post" style="padding-top: 20px;">
 	  <center>
 		<label for="apptTime"><b>Week:</b></label>
 		<input type="Week" name="WeekSelect" id="week" placeholder="Schedule a Time" style="height: auto; width: 190px;" required><br><br>

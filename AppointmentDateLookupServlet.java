@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Jean
+ * @author PC
  */
 @WebServlet(name = "AppointmentDateLookupServlet", urlPatterns = {"/AppointmentDateLookupServlet"})
 public class AppointmentDateLookupServlet extends HttpServlet {
@@ -35,7 +35,9 @@ public class AppointmentDateLookupServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            // MAIN CODE
+            /* TODO output your page here. You may use following sample code. */
+            //main code
+             // MAIN CODE
             // Step #1 - get the "sid" parameter from the previous HTML file
             String week = request.getParameter("WeekSelect");
             String day = request.getParameter("DaySelect");
@@ -73,6 +75,7 @@ public class AppointmentDateLookupServlet extends HttpServlet {
             */
         }
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

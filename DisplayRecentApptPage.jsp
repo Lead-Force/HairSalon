@@ -28,8 +28,14 @@ table.center {
   margin-right: auto;
 }
             </style>
+            
+<script>
+function goBack() {
+  window.history.back();
+  
+}
+</script>
 
-      
     </head>
     
         
@@ -72,6 +78,12 @@ table.center {
 
 
         </table>
+      <br>
+      <br>
+      <div style="text-align:center;"> 
+            <button onclick="goBack()">Back</button>
+            </div>
+
     </form>
            
 </html>

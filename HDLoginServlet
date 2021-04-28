@@ -6,16 +6,7 @@ package Servlets;
  * and open the template in the editor.
  */
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import BusinessObjects.HairDresser;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import static java.lang.System.out;
 
 /**
  *
@@ -53,7 +43,7 @@ public class HDLoginServlet extends HttpServlet {
             
             // Main code
             System.out.println("Starting HairDresser login servlet...");
-            String HUser, HPass, dbId, dbPw;
+            String HUser, HPass, dbId, dbUser, dbPw;
             HUser = request.getParameter("user");
             HPass = request.getParameter("psw");
             h1.selectDB(HUser);
@@ -65,25 +55,25 @@ public class HDLoginServlet extends HttpServlet {
             // (With Input from JSP) Output:Info:   h1 = BusinessObjects.HairDresser@100d00af
             // (With Input from JSP) Output:Info:   h1 = BusinessObjects.HairDresser@4cb06ab7
             
-            // Get dbId from Database
+            // Get dbId & dbUser from Database
             dbId = h1.getHairdresserId(); 
+            dbUser = h1.getHairdresserUser(); 
             System.out.println("dbId = " + dbId );
-            out.println("<h1>Servlet: ID from DB " + dbId + "</h1>");
+            System.out.println("dbUser = " + dbUser );
             
             // Get dbPw from Database
             dbPw = h1.getHairdresserPw(); 
             System.out.println("dbPw = " + dbPw );
-            out.println("<h1>Servlet: PW from DB " + dbPw + "</h1>");
             
             // dbPw trim
-            String dbPw1 = dbPw.trim();
-            System.out.println("dbPw1 = " + dbPw1);
-            out.println("<h1>dbPw1: " + dbPw1 + "</h1>");
+            //String dbPw1 = dbPw.trim();
+            System.out.println("dbPw = " + dbPw);
             
-            // dbId trim
-            String dbId1 = dbId.trim();
-            System.out.println("dbId1 = " + dbId1);
-            out.println("<h1>dbId1: " + dbId1 + "</h1>");
+            // dbId & dbUser trim
+            //String dbId1 = dbId.trim();
+            //String dbUser1 = dbId.trim();
+            System.out.println("dbId1 = " + dbId);
+            System.out.println("dbUser = " + dbUser);
             
             // Valid login
             System.out.println("DBPW = " + dbPw + " JSP PW = " + HPass);
@@ -91,16 +81,17 @@ public class HDLoginServlet extends HttpServlet {
             
             // Test IF:
             // ID works fine; Password doesn't work fine
-            if(HPass.equals(dbPw) && HUser.equals(dbId1)){
-                RequestDispatcher rd = request.getRequestDispatcher("HairdresserLanding.jsp");
+            if(HPass.equals(dbPw) && HUser.equals(dbId)){
+                RequestDispatcher rd = request.getRequestDispatcher("employee.jsp");
                 rd.forward(request, response);
                 System.out.println("Valid login");
                 out.println("<h1>Valid Login!</h1>");
+                
                 HttpSession session = request.getSession(); // Returns the current session
-                //Store the customer object in session
-                session.setAttribute("Hairdresser", h1);
-
+                //Store the Hairdresser object in session
+                session.setAttribute("HairDresser", h1);
             }
+            
             /*
             if(HPass.equals(dbPw1) && HUser.equals(dbId)){
                 RequestDispatcher rd = request.getRequestDispatcher("HairdresserLanding.jsp");
@@ -112,12 +103,12 @@ public class HDLoginServlet extends HttpServlet {
             */
             // Invalid login
             else {
-                RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("employeelogin.jsp");
                 rd.forward(request, response);
                 System.out.println("Invalid login");
-                out.println("<h1>Invalid Login!</h1>");
             }
-            
+            // White page for testing
+            /*
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -132,6 +123,7 @@ public class HDLoginServlet extends HttpServlet {
             // out.println("<h1>dbPw: " + dbPw + "</h1>");
             out.println("</body>");
             out.println("</html>");
+            */
         }
     }
 

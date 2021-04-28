@@ -43,7 +43,8 @@
 
 <header>
     <div class="container">
-      <a href="employee.jsp"><img src="../Resources/Logo3.jpg" alt="logo" class="logo"></a>
+      <a href="employee.jsp"><img src="https://cdn.discordapp.com/attachments/692467198655987833/804975854101725224/Picture1-removebg-preview.png
+" alt="logo" class="logo"></a>
 
       <center>
 	  <nav>

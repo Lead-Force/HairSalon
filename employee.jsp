@@ -19,15 +19,16 @@
 
 <header>
     <div class="container">
-      <a href="employee.jsp"><img src="../Resources/Logo3.jpg" alt="logo" class="logo"></a>
+      <a href="employee.jsp"><img src="https://cdn.discordapp.com/attachments/692467198655987833/804975854101725224/Picture1-removebg-preview.png
+" alt="logo" class="logo"></a>
 
       <center>
 	  <nav>
         <ul>
           <li><a href="employee.jsp">Home</a></li>
-          <li><a href="todayappointment.jsp">Today's Appts</a></li><br>
-          <li><a href="ViewCustomer.jsp">All Customers</a></li>
-          <li><a href="recentappointment.jsp">Recent Appts</a></li><br>
+          <li><a href="todayappointment.jsp">Appointment Lookup</a></li><br>
+          <li><a href="ViewCustomer.jsp">List of Customers</a></li>
+          <li><a href="recentappointment.jsp">Recent Appointments</a></li><br>
           <li>
 			<div class="dropdown">
 				<button class="dropbtn">Profile</button>
@@ -47,32 +48,28 @@
 
 <div class="main">
 <br>
-  <h1>Welcome $User</h1>
     <center>
 		<a href="todayappointment.jsp">
 			<div class="tile">
 				<p style="margin: 0; color: black;">Today's Appts</p>
-				<img src="../Resources/calendar.jpg" height="100" width="130" style="padding-top: 10px; border-radius: 20px;"></img>
+				<img src="https://raw.githubusercontent.com/Lead-Force/HairSalon/FE/Resources/calendar.jpg" height="100" width="130" style="padding-top: 10px; border-radius: 20px;"></img>
 			</div>
 		</a>
 
 		<a href="ViewCustomer.jsp">
 			<div class="tile1">
 				<p style="margin: 0; color: black;">All Customers</p>
-				<img src="../Resources/customer.png" height="110" width="110" style="padding-top: 5px;"></img>
+				<img src="https://raw.githubusercontent.com/Lead-Force/HairSalon/FE/Resources/customer.png" height="110" width="110" style="padding-top: 5px;"></img>
 			</div>
 		</a>
 		
 		<a href="recentappointment.jsp">
 			<div class="tile2">
 				<p style="margin: 0; color: black;">Recent Appts</p>
-				<img src="../Resources/today.jpg" height="130" width="130"></img>
+				<img src="https://raw.githubusercontent.com/Lead-Force/HairSalon/FE/Resources/today.jpg" height="130" width="130"></img>
 			</div>
 		</a>
 	</center>
-  
 </div>
-
 </body>
-
 </html>

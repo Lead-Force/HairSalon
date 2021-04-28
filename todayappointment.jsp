@@ -17,6 +17,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
 <link rel="stylesheet" href="Stylesheets\employee.css">
+<style>
+    table, th, td {
+  border: 1px solid black;
+}
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
 </head>
 
 <%
@@ -52,7 +61,8 @@
 
 <header>
     <div class="container">
-      <a href="employee.jsp"><img src="../Resources/Logo3.jpg" alt="logo" class="logo"></a>
+      <a href="employee.jsp"><img src="https://cdn.discordapp.com/attachments/692467198655987833/804975854101725224/Picture1-removebg-preview.png
+" alt="logo" class="logo"></a>
 
       <center>
 	  <nav>
@@ -109,7 +119,7 @@
                     <th>Week</th>
                     <th>Day</th>
                     <th>Reserve</th>
-                </tr><
+                </tr>
                 <% for(int row=0; row < listSize; row++) { %>
                 <tr>
                     <td><input type="text" name="timeTb" value="<%= aArray[row].getAptTime()%>"readonly></td>

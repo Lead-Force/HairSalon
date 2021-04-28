@@ -82,15 +82,15 @@ public class HDLoginServlet extends HttpServlet {
             // Test IF:
             // ID works fine; Password doesn't work fine
             if(HPass.equals(dbPw) && HUser.equals(dbId)){
-                RequestDispatcher rd = request.getRequestDispatcher("myprofile.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("employee.jsp");
                 rd.forward(request, response);
                 System.out.println("Valid login");
                 out.println("<h1>Valid Login!</h1>");
+                
                 HttpSession session = request.getSession(); // Returns the current session
                 //Store the Hairdresser object in session
-                session.setAttribute("Hairdresser", h1);
+                session.setAttribute("HairDresser", h1);
             }
-            
             
             /*
             if(HPass.equals(dbPw1) && HUser.equals(dbId)){

@@ -16,11 +16,21 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
 <link rel="stylesheet" href="Stylesheets\employee.css">
+<style>
+           h2 {text-align: center;}
+            body {
+background-image: url("https://cdn.pixabay.com/photo/2017/09/07/09/55/square-2724387__340.jpg");
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+}
+</style>
 </head>
 
 <header>
     <div class="container">
-      <a href="employee.jsp"><img src="../Resources/Logo3.jpg" alt="logo" class="logo"></a>
+      <a href="employee.jsp"><img src="https://cdn.discordapp.com/attachments/692467198655987833/804975854101725224/Picture1-removebg-preview.png
+" alt="logo" class="logo"></a>
 
       <center>
 	  <nav>
@@ -47,9 +57,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Update Successful Page</title>
     </head>
     <body>
-        <h1>Profile Update Succesful!</h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>Dear Hairdresser, your Profile has successfully been updated!</h2>
     </body>
 </html>

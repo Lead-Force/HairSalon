@@ -8,6 +8,7 @@ package Servlets;
 import BusinessObjects.HairDresser;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,35 +41,38 @@ public class ProfileServlet extends HttpServlet {
             System.out.println("Starting the Profile Servlet");
             
             // Obtain parameters
-            String HID = request.getParameter("id"); 
-            String HUser = request.getParameter("user"); 
-            String HPass = request.getParameter("psw");
-            String FirstName = request.getParameter("fname"); 
-            String LastName = request.getParameter("lname"); 
-            String Address = request.getParameter("address"); 
-            String PhoneNo = request.getParameter("phone"); 
-            String Email = request.getParameter("email"); 
-            String TimeOff = request.getParameter("timeoff");
-            String HoursRequested = request.getParameter("hoursrequested");  
+            String HairdresserId = request.getParameter("HairdresserID"); 
+            String HairdresserUser = request.getParameter("Username"); 
+            String HairdresserPw = request.getParameter("Password");
+            String HairdresserFname = request.getParameter("FirstName"); 
+            String HairdresserLname = request.getParameter("LastName"); 
+            String HairdresserAddress = request.getParameter("Address"); 
+            String HairdresserPhone = request.getParameter("PhoneNumber"); 
+            String HairdresserEmail = request.getParameter("Email"); 
             
+            HttpSession session = request.getSession(); 
+            h1=(HairDresser) session.getAttribute("HairDresser");
+            
+            //String TimeOff = request.getParameter("TimeOff");
+            //String HoursRequested = request.getParameter("hoursrequested");  
+            
+            /*
             h1.selectDB(HID);
             System.out.println(h1);
             System.out.println("<h1>Servlet: HID is " + h1 + "</h1>");
+            */
             
-            h1.setHairdresserId(HID);
-            h1.setHairdresserUser(HUser);
-            h1.setHairdresserPw(HPass); 
-            h1.setHairdresserFname(FirstName);
-            h1.setHairdresserLname(LastName);
-            h1.setHairdresserAddress(Address);
-            h1.setHairdresserPhone(PhoneNo);
-            h1.setHairdresserEmail(Email); 
+            //h1.setHairdresserId(HID);
+            //h1.setHairdresserUser(HUser);
+            h1.setHairdresserPw(HairdresserPw); 
+            h1.setHairdresserFname(HairdresserFname);
+            h1.setHairdresserLname(HairdresserLname);
+            h1.setHairdresserAddress(HairdresserAddress);
+            h1.setHairdresserPhone(HairdresserPhone);
+            h1.setHairdresserEmail(HairdresserEmail); 
             h1.updateDB();
             
-            HttpSession session = request.getSession(); 
-            h1=(HairDresser) session.getAttribute("Hairdresser");
-            
-            /* TODO output your page here. You may use following sample code */
+            /* TODO output your page here. You may use following sample code 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -88,9 +92,11 @@ public class ProfileServlet extends HttpServlet {
             // out.println("<h1>New Hairdresser Hours Requested: " + HoursRequested + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
+            */
             System.out.println("End of the Profile Servlet");
-            
+            //h1.setHairdresserFname(FirstName);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("UpdateSuccesful.jsp");
+            requestDispatcher.forward(request, response);
         }
     }
 

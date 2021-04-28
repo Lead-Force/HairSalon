@@ -49,9 +49,9 @@
 	  <nav>
         <ul>
           <li><a href="employee.jsp">Home</a></li>
-          <li><a href="todayappointment.jsp">Today's Appts</a></li><br>
-          <li><a href="ViewCustomer.jsp">All Customers</a></li>
-          <li><a href="recentappointment.jsp">Recent Appts</a></li><br>
+          <li><a href="todayappointment.jsp">Appointment Lookup</a></li><br>
+          <li><a href="ViewCustomer.jsp">List of Customers</a></li>
+          <li><a href="recentappointment.jsp">Recent Appointments</a></li><br>
           <li>
 			<div class="dropdown">
 				<button class="dropbtn">Profile</button>
@@ -109,13 +109,6 @@
             </tr>
         <% } %>
         <table style="width:50%">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <br>
 </div>
 </body>

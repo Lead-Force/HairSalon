@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
  * @author Jean
  */
 @WebServlet(name = "ProfileServlet", urlPatterns = {"/ProfileServlet"})
+// Servlet used to make changes to the Hairdresser profile (update data on database)
 public class ProfileServlet extends HttpServlet {
 
     /**
@@ -40,7 +41,7 @@ public class ProfileServlet extends HttpServlet {
             HairDresser h1 = new HairDresser(); 
             System.out.println("Starting the Profile Servlet");
             
-            // Obtain parameters
+            // Obtain parameters from previous JSP
             String HairdresserId = request.getParameter("HairdresserID"); 
             String HairdresserUser = request.getParameter("Username"); 
             String HairdresserPw = request.getParameter("Password");
@@ -50,6 +51,7 @@ public class ProfileServlet extends HttpServlet {
             String HairdresserPhone = request.getParameter("PhoneNumber"); 
             String HairdresserEmail = request.getParameter("Email"); 
             
+            // Get the current session
             HttpSession session = request.getSession(); 
             h1=(HairDresser) session.getAttribute("HairDresser");
             
@@ -64,6 +66,8 @@ public class ProfileServlet extends HttpServlet {
             
             //h1.setHairdresserId(HID);
             //h1.setHairdresserUser(HUser);
+            
+            // Set new parameters and update
             h1.setHairdresserPw(HairdresserPw); 
             h1.setHairdresserFname(HairdresserFname);
             h1.setHairdresserLname(HairdresserLname);
@@ -93,6 +97,8 @@ public class ProfileServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
             */
+            
+            // Provide feedback of successful update to clients
             System.out.println("End of the Profile Servlet");
             //h1.setHairdresserFname(FirstName);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("UpdateSuccesful.jsp");

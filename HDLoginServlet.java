@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
  * @author Jean
  */
 @WebServlet(urlPatterns = {"/HDLoginServlet"})
+// Servlet used to Log in a Hairdresser
 public class HDLoginServlet extends HttpServlet {
     String a,b = null;
     /**
@@ -33,6 +34,8 @@ public class HDLoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    // Get User and Password from JSP
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -41,6 +44,7 @@ public class HDLoginServlet extends HttpServlet {
             // Get Hairdresser object
             HairDresser h1 = new HairDresser();
             
+            // Get User and Password from JSP
             // Main code
             System.out.println("Starting HairDresser login servlet...");
             String HUser, HPass, dbId, dbUser, dbPw;
@@ -80,13 +84,14 @@ public class HDLoginServlet extends HttpServlet {
             System.out.println("Outside IF");
             
             // Test IF:
-            // ID works fine; Password doesn't work fine
+            // Used to determine if Password from JSP equals Password from Database and Username from JSP equals Username from Database
             if(HPass.equals(dbPw) && HUser.equals(dbId)){
                 RequestDispatcher rd = request.getRequestDispatcher("employee.jsp");
                 rd.forward(request, response);
                 System.out.println("Valid login");
                 out.println("<h1>Valid Login!</h1>");
                 
+               
                 HttpSession session = request.getSession(); // Returns the current session
                 //Store the Hairdresser object in session
                 session.setAttribute("HairDresser", h1);
@@ -101,7 +106,7 @@ public class HDLoginServlet extends HttpServlet {
                 HttpSession session = request.getSession(); // Returns the current session
             }
             */
-            // Invalid login
+            // Invalid login sends you back to the login 
             else {
                 RequestDispatcher rd = request.getRequestDispatcher("employeelogin.jsp");
                 rd.forward(request, response);

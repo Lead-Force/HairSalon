@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Jean
  */
+// Servlet that shows you the recent appointments
 public class RecentApptServlet extends HttpServlet {
 
     /**
@@ -47,7 +48,7 @@ public class RecentApptServlet extends HttpServlet {
         //Store the customer object in session
         session2.setAttribute("customer" , c1);
                 
-                
+        // Send them to the correct JSP
         RequestDispatcher dispatch = request.getRequestDispatcher("/DisplayRecentApptPage.jsp");
         
         dispatch.forward(request, response);

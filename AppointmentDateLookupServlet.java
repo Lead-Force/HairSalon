@@ -20,6 +20,9 @@ import javax.servlet.http.HttpSession;
  * @author PC
  */
 @WebServlet(name = "AppointmentDateLookupServlet", urlPatterns = {"/AppointmentDateLookupServlet"})
+/**************************************************************
+ * Servlet used to look up and appointment based on week and day (date) and display that to the JSP
+ ***************************************************************/
 public class AppointmentDateLookupServlet extends HttpServlet {
 
     /**
@@ -38,7 +41,7 @@ public class AppointmentDateLookupServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             //main code
              // MAIN CODE
-            // Step #1 - get the "sid" parameter from the previous HTML file
+            // Step #1 - get the "week" and "day" parameter from the previous HTML file
             String week = request.getParameter("WeekSelect");
             String day = request.getParameter("DaySelect");
             
@@ -50,15 +53,18 @@ public class AppointmentDateLookupServlet extends HttpServlet {
             // Step #4 - Make any decisions necessary
             // No decisions needed here
 
-            //Step #5 - Put Student Object in Session using HttpSession
+            //Step #5 - Put Object in Session using HttpSession and set attributes
             HttpSession ses1;
             ses1 = request.getSession();
             ses1.setAttribute("Week", week);
             ses1.setAttribute("Day", day);
-            System.out.println("Student added to Session/scheduling JStudentLookup.jsp");
+            //System.out.println("");
 			
              //Step #6 - Use RequestDispatcher to forward to JStudentLookup.jsp
              
+             /**************************************************************
+             * Send client to the correct jsp
+             ***************************************************************/
              RequestDispatcher rd = request.getRequestDispatcher("todayappointment.jsp");
              rd.forward(request, response);     
              

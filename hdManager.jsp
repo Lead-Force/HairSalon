@@ -3,6 +3,8 @@
     Created on : Feb 16, 2021, 1:10:12 AM
     Author     : renel
 --%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="BusinessObjects.HairDresserList"%>
 <%@page import="BusinessObjects.HairDresser"%>
@@ -39,42 +41,64 @@
         <p>
         <form  name="HairDresserLookupForm" action="http://localhost:8080/THS/HdManagerServlet" method="post">
             <%
-            HairDresser hd1 = new HairDresser();
-            HairDresser k2;
-            HairDresser insert1;
-            HairDresser[] b;
+                //properties
+                HairDresser hd1 = new HairDresser();
+                HairDresser k2;
+                HairDresser insert1;
+                HairDresser[] b;
+                HairDresser dh2;
+                
+                //Strings
+                String dh3;
                 //hd1 = (HairDresser) session.getAttribute("k1");
-               ArrayList<HairDresser> bList = new ArrayList<HairDresser>();
-               k2 = (HairDresser) session.getAttribute("L1");
-               insert1 = (HairDresser) session.getAttribute("k1");
+                ArrayList<HairDresser> bList = new ArrayList<HairDresser>();
+                k2 = (HairDresser) session.getAttribute("L1");
+                insert1 = (HairDresser) session.getAttribute("k1");
+                dh2 = (HairDresser) session.getAttribute("dh1");
 
-               bList = hd1.getAllHairDressers();
-               if (k2!=null){
-               out.println(k2.getHairDresserId());
-               //out.println("Test");
-               //bList.add(k2);
-               }
-               
-               if (insert1 !=null){
-                   bList.add(insert1);
-                   //out.println("Test");
-                   //out.println(insert1.getHairDresserId());
-               }
+                bList = hd1.getAllHairDressers();
+                if (k2 != null) {
+                    out.println(k2.getHairDresserId());
+                    //out.println("Test");
+                    //bList.add(k2);
+                }
+
+                if (insert1 != null) {
+                    bList.add(insert1);
+                    //out.println("Test");
+                    //out.println(insert1.getHairDresserId());
+                }
+                
+
                 int listSize = hd1.getCount();
                 out.println(listSize);
                 b = new HairDresser[listSize];
-                
-                for (int count=0;count<listSize;count++){
+
+                for (int count = 0; count < listSize; count++) {
                     //code to populate the array with the arrayList
                     b[count] = bList.get(count);
-                    if (insert1 !=null){
-                   //bList.add(insert1);
-                   //code to add the inserted object to the arraylist
-                   bList.add(listSize-1,insert1);
-               }
+                    
+                     
+                 //delete hd jsp
+                //code to remove deleted object from the array list
+                if (dh2 != null) {
+                    dh3 = dh2.getHairDresserId();
+                    for (Iterator<HairDresser> iterator = bList.iterator(); iterator.hasNext();) {
+                        if (iterator.next().getHairDresserId().equals(dh3)) {
+                           iterator.remove();
+                        }
+                    }
+                }
+                    
+                    if (insert1 != null) {
+                        //bList.add(insert1);
+                        //code to add the inserted object to the arraylist
+                        bList.add(listSize - 1, insert1);
+                    }
                     //out.println("list sizeL: "+listSize+" count: "+count);
                     out.println(b[count].getHairDresserFname());
                 }
+               
         %>
 
             <table> <tr>

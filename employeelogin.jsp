@@ -10,13 +10,27 @@
 <head>
 	<title>Employee Login</title>
 	<link rel="stylesheet" href="Stylesheets\employeelogin.css">
+        
+        <script type="text/javascript">
+function validateForm() {
+  var user = document.HDLoginServlet.user.value;
+  var psw = document.HDLoginServlet.psw.value;
+  
+  if (user.length >20 || psw.length>20){
+    alert("Username and password must be greater than 20 characters");
+    user.focus();
+    psw.focus();
+  }
+     
+}
+</script>
 </head>
 
 <body>
     <br><br><h2>Employee Login Page</h2>
     <div class="login">
 	<center>
-    <form action="HDLoginServlet" method="post">
+    <form name="HDLoginServlet" action="HDLoginServlet" method="post">
         <label style="padding-right: 214px;"><b>User Name:</b></label>
         <input type="text" name="user" id="user" placeholder="Username" required>
         <br><br>

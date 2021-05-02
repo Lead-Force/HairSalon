@@ -82,6 +82,38 @@ function goBack() {
   window.history.back();
   
 }
+<script type="text/javascript">
+function validateForm() {
+  var FirstName = document.ProfileForm.FirstName.value;
+  var LastName = document.ProfileForm.LastName.value;
+  var Address = document.ProfileForm.Address.value;
+  var PhoneNumber = document.ProfileForm.PhoneNumber.value;
+    var Email = document.ProfileForm.Email.value;
+    //var psw = document.ProfileForm.psw.value;
+    
+  if (FirstName.length >30  || LastName.length >30){
+    alert("First and Last Name must not be greater than 30 characters");
+    document.ProfileForm.FirstName.focus();
+    document.ProfileForm.LastName.focus();
+  }
+  if (document.ProfileForm.Address.value.length >30){
+    alert("Address must not be greater than 30 characters");
+    document.ProfileForm.Address.focus();
+    }
+   if (document.ProfileForm.PhoneNumber.value.length >13){
+    alert("Phone Number must be in XXX-XXX-XXXX format and cannot be greater than 13 Characters!");
+    document.ProfileForm.PhoneNumber.focus();
+    }
+  else if (document.ProfileForm.Email.value.length >30){
+    alert("Email must not be greater than 30 characters");
+    document.ProfileForm.Email.focus();
+  }
+  if (psw.length >30){
+    alert("Password must not be greater than 30 characters");
+    psw.focus();
+  }
+  }
+</script>
 </script>
 
 </head>

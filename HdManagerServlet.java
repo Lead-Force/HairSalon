@@ -51,8 +51,8 @@ public class HdManagerServlet extends HttpServlet {
                 Double pr;
             //INSERT***************************
            if (value.equals(insert)){
-                
-                id = request.getParameter("idTb");
+                HairDresser k1 = new HairDresser();
+                id = "200"+String.valueOf(HairDresser.getCount()+1);
                 fname= request.getParameter("fNameTb");
                 lname= request.getParameter("lNameTb");
                 address= request.getParameter("addressTb");
@@ -62,10 +62,10 @@ public class HdManagerServlet extends HttpServlet {
                 timeOff= request.getParameter("timeOffTb");
                 hReq= Integer.parseInt(request.getParameter("hoursReqTb"));
                 hGiv= Integer.parseInt(request.getParameter("hoursGivenTb"));
-                pr= Double.parseDouble(request.getParameter("PayRateTb"));
+                pr= Double.parseDouble(request.getParameter("payRateTb"));
                 username = fname + lname;
                 pw= lname + id;
-                HairDresser k1 = new HairDresser();
+
                 k1.setHairDresserId(id);
                 k1.insertDB(id, username, pw, fname,lname,address,phone,
                         email,fullTime,timeOff,hReq, hGiv, pr);
@@ -80,6 +80,7 @@ public class HdManagerServlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("hdManager.jsp");
                 rd.forward(request, response);
                 System.out.println("Sending back to hdManager.jsp");
+
             }
             //LOOKUP***************************
             if (value.equals(lookup)){

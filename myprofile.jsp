@@ -88,8 +88,8 @@ function validateForm() {
   var LastName = document.ProfileForm.LastName.value;
   var Address = document.ProfileForm.Address.value;
   var PhoneNumber = document.ProfileForm.PhoneNumber.value;
-    var Email = document.ProfileForm.Email.value;
-    //var psw = document.ProfileForm.psw.value;
+  var Email = document.ProfileForm.Email.value;
+  //var psw = document.ProfileForm.psw.value;
     
   if (FirstName.length >30  || LastName.length >30){
     alert("First and Last Name must not be greater than 30 characters");
@@ -133,28 +133,28 @@ function validateForm() {
     <hr>
 
     <label for="HairdresserID"><b>HairDresser ID Number</b></label>
-    <input type="text"  placeholder="Your HairdresserID" name="HairdresserID" value="<%= h1.getHairdresserId() %>" disabled>
+    <input type="text"  placeholder="Your HairdresserID" name="HairdresserID" value="<%= h1.getHairdresserId() %>" onChange="validateForm()" disabled>
     
     <label for="Username"><b>Username</b></label>
-    <input type="text" placeholder="Your Username" name="Username" value="<%= h1.getHairdresserUser() %> " disabled>
+    <input type="text" placeholder="Your Username" name="Username" value="<%= h1.getHairdresserUser() %>" onChange="validateForm()" disabled>
     
     <label for="Password"><b>Password</b></label>
-    <input type="text" placeholder="Your Password" name="Password" value="<%= h1.getHairdresserPw() %> " >
+    <input type="text" placeholder="Your Password" name="Password" value="<%= h1.getHairdresserPw() %>" onChange="validateForm()"  >
     
     <label for="First Name"><b>First Name</b></label>
-    <input type="text" placeholder="Your First Name" name="FirstName" value="<%= h1.getHairdresserFname() %>"> 
+    <input type="text" placeholder="Your First Name" name="FirstName" value="<%= h1.getHairdresserFname() %>" onChange="validateForm()" > 
    
     <label for="Last Name"><b>Last Name</b></label>
-    <input type="text" placeholder="Your Last Name" name="LastName" value="<%= h1.getHairdresserLname() %>">
+    <input type="text" placeholder="Your Last Name" name="LastName" value="<%= h1.getHairdresserLname() %>" onChange="validateForm()" >
     
     <label for="Address"><b>Address</b></label>
-    <input type="text" placeholder="Your Address" name="Address" value="<%= h1.getHairdresserAddress() %>">
+    <input type="text" placeholder="Your Address" name="Address" value="<%= h1.getHairdresserAddress() %>" onChange="validateForm()" >
     
     <label for="Phone Number"><b>Phone Number</b></label>
-    <input type="text" placeholder="Your Phone Number" name="PhoneNumber" value="<%= h1.getHairdresserPhone() %>">
+    <input type="text" placeholder="Your Phone Number" name="PhoneNumber" value="<%= h1.getHairdresserPhone() %>" onChange="validateForm()" >
     
     <label for="Email"><b>Email</b></label>
-    <input type="text" placeholder="Your Email" name="Email" value="<%= h1.getHairdresserEmail() %>">
+    <input type="text" placeholder="Your Email" name="Email" value="<%= h1.getHairdresserEmail() %>" onChange="validateForm()" >
 
         <hr>
     <input type="submit" name="Update" value="Update">

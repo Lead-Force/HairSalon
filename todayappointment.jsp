@@ -69,26 +69,28 @@
 
 <header>
     <div class="container">
-      <a href="HomePage.html"><img src="https://media.discordapp.net/attachments/804523300302618646/821091814689603654/THS.jpg" alt="logo" class="logo"></a>
+      <a href="employee.jsp"><img src="https://cdn.discordapp.com/attachments/692467198655987833/804975854101725224/Picture1-removebg-preview.png
+" alt="logo" class="logo"></a>
 
-      <nav>
+      <center>
+	  <nav>
         <ul>
-          <li><a href="HomePage.html">Home</a></li>
-          <li><a href="servicepage.html">Services</a></li>
-          <li><a href="bookappt.jsp">Book Appointment</a></li>
-          <li><a href="contactus.html">Contact Us</a></li>
+          <li><a href="employee.jsp">Home</a></li>
+          <li><a href="todayappointment.jsp">Appointment Lookup</a></li><br>
+          <li><a href="ViewCustomer.jsp">List of Customers</a></li>
+          <li><a href="recentappointment.jsp">Recent Appointments</a></li><br>
           <li>
 			<div class="dropdown">
-				<button class="dropbtn">Login</button>
+				<button class="dropbtn">Profile</button>
 				<div class="dropdown-content">
-					<a href="THSLogin.html">Customer</a>
-					<a href="Employee/employeelogin.html">Employee</a>
-					<a href="Admin/adminlogin.html">Admin</a>
+					<a href="myprofile.jsp">My Profile</a>
+					<a href="employeelogin.jsp">Log Out</a>
 				</div>
 			</div>
-		  </li>
+		  </li><br><br>
 		</ul>
       </nav>
+	  </center>
     </div>
 </header>
 

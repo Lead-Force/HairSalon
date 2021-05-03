@@ -51,23 +51,18 @@ public class HdManagerServlet extends HttpServlet {
                 Double pr;
             //INSERT***************************
            if (value.equals(insert)){
-                /*String id,username, pw;
-                String fname, lname, address, phone
-                        , email, timeOff;
-                boolean fullTime;
-                int hReq, hGiv;
-                Double pr;*/
+                
                 id = request.getParameter("idTb");
-                fname= "fname";
-                lname= "lname";
-                address= "address";
-                phone= "404 770 6498";
-                email= "email@gmail.com";
-                fullTime= true;
-                timeOff= "TW";
-                hReq= 24;
-                hGiv= 24;
-                pr= 12.0;
+                fname= request.getParameter("fNameTb");
+                lname= request.getParameter("lNameTb");
+                address= request.getParameter("addressTb");
+                phone= request.getParameter("phoneTb");
+                email= request.getParameter("emailTb");
+                fullTime= Boolean.parseBoolean(request.getParameter("fullTimeTb"));
+                timeOff= request.getParameter("timeOffTb");
+                hReq= Integer.parseInt(request.getParameter("hoursReqTb"));
+                hGiv= Integer.parseInt(request.getParameter("hoursGivenTb"));
+                pr= Double.parseDouble(request.getParameter("PayRateTb"));
                 username = fname + lname;
                 pw= lname + id;
                 HairDresser k1 = new HairDresser();
@@ -88,13 +83,6 @@ public class HdManagerServlet extends HttpServlet {
             }
             //LOOKUP***************************
             if (value.equals(lookup)){
-            //second initialize placeholder variables
-            /*String id,username, pw;
-            String fname, lname, address, phone
-           , email, timeOff;
-            boolean fullTime;
-            int hReq, hGiv;
-            Double pr;*/
             //third get the parameters from the user
             id = request.getParameter("idTb3");
             //third instanciate a new hairdresser object
@@ -119,30 +107,21 @@ public class HdManagerServlet extends HttpServlet {
             //third get the parameters from the user
             id = request.getParameter("idTb3");
             //third instanciate a new hairdresser object
-            HairDresser k1 = new HairDresser();
+            HairDresser dh1 = new HairDresser();
             //last perform a db function
-            k1.selectDB(id);
-            System.out.println(k1+" has been added to the list");
-            k1.deleteDB();
-            System.out.println(k1+" has been deleted from list");
+            dh1.selectDB(id);
+            System.out.println(dh1+" has been added to the list");
+            dh1.deleteDB();
+            System.out.println(dh1+" has been deleted from list");
             HttpSession ses1;
             ses1 = request.getSession();
-            ses1.setAttribute("k1", k1);
+            ses1.setAttribute("dh1", dh1);
             System.out.println("HairDresser added to Session/scheduling HdManager.jsp");
             
             RequestDispatcher rd = request.getRequestDispatcher("hdManager.jsp");
                 rd.forward(request, response);
                 System.out.println("Sending back to hdManager.jsp");
             }
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Test "+ value+ "</h1>");
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

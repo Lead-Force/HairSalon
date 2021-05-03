@@ -14,6 +14,16 @@ table, th, td {
   border: 1px solid black;
 }
 </style>
+<script type="text/javascript">
+function validateForm() {
+  var CustID = document.RecentApptServlet.user.value;
+  
+  if (user.length >20){
+    alert("CustID must be less than 20 characters");
+    document.RecentApptServlet.CustID.focus();
+  }
+}
+</script>
 </head>
 
 <header>

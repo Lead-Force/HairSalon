@@ -22,13 +22,17 @@ public class Admin {
     String adminId, adminPw;
     String adminFname, adminLname, adminAddress, adminEmail;
     
-    //Constructor that passes no arguments
+    /****************************************
+     * Constructor that passes no arguments
+     * *************************************/
     public Admin(){
         adminId = adminPw = null;
         adminFname = adminLname= adminAddress = adminEmail = null;
     }
     
-    //Constructor that passes all arguments
+    /****************************************
+     * Constructor that passes all arguments
+     * *************************************/
     public Admin(String id, String pw, String fName, String lName, String address, String email){
         adminId = id;
         adminPw = pw;
@@ -50,14 +54,18 @@ public class Admin {
             //System.out.println("Password for user:" + pwdb );
         }
             
-        //display method
+        /****************************************
+     * Displays admin object to console
+     * *************************************/
         public void displayAdmin(){
             System.out.println("ID: " + adminId+ " PW: "+ adminPw +" First Name: " + adminFname 
                     + " Last Name " + adminLname + " Address: " + adminAddress + 
                     " Email: " + adminEmail);
             
         }
-        
+     /****************************************
+     * Method to select an admin from the database
+     * *************************************/
     public void selectDB(String i) {
         adminId = i;
         try {    //Load DB Driver
@@ -84,7 +92,9 @@ public class Admin {
         }
     } //end selectDB()
     
-    //insertDB
+    /****************************************
+     * Method to insert an admin from the database
+     * *************************************/
         public void insertDB(String id, String pw, String fn, String ln, String adr, 
                 String eml){
         //assign values
@@ -125,7 +135,9 @@ public class Admin {
             System.out.println(e1);
         }
     }
-        //DeleteDB
+        /****************************************
+     * Method to delete an admin from the database
+     * *************************************/
         public void deleteDB(){
                         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");

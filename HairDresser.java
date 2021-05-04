@@ -7,7 +7,7 @@ package BusinessObjects;
 
 /**
  *
- * @author Jean, Rene
+ * @author Rene
  * hairDresser business object
  * THS System Project
  */
@@ -60,17 +60,19 @@ public class HairDresser {
             //main****************************************************************
             public static void main(String [] args){
             //Test Instanciating a hairDresser object
-            //HairDresser hd1 = new HairDresser();
+            HairDresser hd1 = new HairDresser();
             //hd1.selectDB("2007");
-            /*hd1.insertDB("2007","idTest","pwTsest","fname","lname","address",
-                    "404-770-6498","email@gmail.com",true,"TW",24,24,12.0);*/
+            hd1.insertDB("2007","idTest","pwTsest","fname","lname","address",
+                    "404-770-6498","email@gmail.com",true,"TW",24,24,12.0);
             //hd1.deleteDB();
             //display
-            //hd1.displayHairDresser();
+            hd1.displayHairDresser();
             //hd1.displayHairDresser();
         }
             
-        //display method
+     /****************************************
+     * Method to display hairdresser to console
+     * *************************************/
         public void displayHairDresser(){
             System.out.println("Data:\n"+
                     "ID: " + hairDresserId+" Username: " + hairDresserUsername+ 
@@ -85,7 +87,11 @@ public class HairDresser {
             );
            hdList.displayList();
         }
-        //This is a static arrayList that gets hairdressers from getallhairdressers method
+        
+        /****************************************
+     * This is a static arrayList that gets all hairdressers from database
+     * *************************************/
+        //
         public static ArrayList<HairDresser> getAllHairDressers() throws ClassNotFoundException, SQLException {
      try {    
 //Load DB Driver
@@ -122,7 +128,9 @@ public class HairDresser {
         }
         return customerList;
         }
-        //selectDB method to select all
+        /****************************************
+     * Obselete method
+     * *************************************/
         public static void selectAllDB(){
         try {
             //Load DB Driver
@@ -146,7 +154,9 @@ public class HairDresser {
         }
         
         }
-        
+         /****************************************
+     * Method to get the number of hairdressers  from the database
+     * *************************************/
         public static int getCount(){
             try {
             //Load DB Driver
@@ -172,7 +182,9 @@ public class HairDresser {
         }    
         
         
-        //this is used to obtain all hair dressers from db and store them in like an arrayList
+        /****************************************
+     * Method to add objects to list business object however is not used
+     * *************************************/
         public void getHairDressers(){
             try {    //Load DB Driver
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -197,8 +209,39 @@ public class HairDresser {
         }
         }   
            
-        
-        //selectDB*************************************************************
+         /****************************************
+     * Method to update hairdresser from database
+     * *************************************/
+        public void updateDB(){
+            try{
+                     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection con1 = DriverManager.getConnection("jdbc:ucanaccess://"
+                    + "B:\\OneDrive - Chattahoochee Technical College\\SPRING21\\SYSTEMS PROJECT\\Databases\\db.accdb");
+              
+            Statement stmt = con1.createStatement();
+            String sql = "update HairDresser2 set hdUsername = '"+getHairDresserUsername() + "',"+
+                                            " hdPw ='"+getHairDresserPw()+"',"+
+                                            " Address ='"+getHairDresserAddress()+"',"+
+                                            " Phone ='"+getHairDresserPhone()+"',"+
+                                            " Email = '"+getHairDresserEmail() +"',"+
+                                            " TimeOff ='"+getTimeOff()+"',"+
+                                            " HoursRequested = '"+getHoursRequested() +"'"+
+                                            " where ID='"+getHairDresserId()+"'";
+            System.out.println(sql);
+            int n = stmt.executeUpdate(sql);
+            if (n==1)
+                System.out.println("UPDATE Successful!!!");
+            else
+                System.out.println("UPDATE FAILED***********");
+            con1.close();
+        }
+        catch(Exception e1){
+            System.out.println(e1);
+        }
+        }
+        /****************************************
+     * Method to select hairdresser from database
+     * *************************************/
         public void selectDB(String i) {
         hairDresserId = i;
         try {    //Load DB Driver
@@ -235,7 +278,9 @@ public class HairDresser {
         }
     } //end selectDB()
     
-    //insertDB******************************************************************
+         /****************************************
+     * Method to insert hairdresser from database
+     * *************************************/
         public void insertDB(String id, String un, String pw, String fn, String ln, 
                 String adr, String phone,String eml, boolean fullt,String timeo,int hreq,
                 int hgiv, double pr){
@@ -297,7 +342,9 @@ public class HairDresser {
             System.out.println(e1);
         }
     }
-        //DeleteDB***********************************************************
+ /****************************************
+     * Method to delete hairdresser from database
+     * *************************************/
         public void deleteDB(){
                         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");

@@ -10,7 +10,7 @@ package BusinessObjects;
  * @author renel
  */
 public class Strings {
-    public static String url = "jdbc:ucanaccess://C:\\Users\\PC\\OneDrive - Chattahoochee Technical College\\SPRING21\\SYSTEMS PROJECT\\Databases\\db.accdb";
+    public static String url = "jdbc:ucanaccess://B:\\OneDrive - Chattahoochee Technical College\\SPRING21\\SYSTEMS PROJECT\\Databases\\db.accdb";
     public static String driver = "net.ucanaccess.jdbc.UcanaccessDriver";
     //jsp strings
     public static String footer = "               <br><br>\n"

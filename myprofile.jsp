@@ -1,11 +1,11 @@
 <%-- 
-    Document   : customerprofile
+    Document   : HairDresserprofile
     Created on : Mar 20, 2021, 7:50:55 PM
     Author     : kimmy
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="BO.Customer" %>
+<%@page import="BO.HayrDresser" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,14 +77,19 @@ br {
  clear: left;
 }
 </style>
+<script>
+function goBack() {
+  window.history.back();
+  
+}
 <script type="text/javascript">
 function validateForm() {
   var FirstName = document.ProfileForm.FirstName.value;
   var LastName = document.ProfileForm.LastName.value;
   var Address = document.ProfileForm.Address.value;
-  var PhoneNo = document.ProfileForm.PhoneNo.value;
+  var PhoneNumber = document.ProfileForm.PhoneNumber.value;
     var Email = document.ProfileForm.Email.value;
-    var psw = document.ProfileForm.psw.value;
+    //var psw = document.ProfileForm.psw.value;
     
   if (FirstName.length >30  || LastName.length >30){
     alert("First and Last Name must not be greater than 30 characters");
@@ -95,9 +100,9 @@ function validateForm() {
     alert("Address must not be greater than 30 characters");
     document.ProfileForm.Address.focus();
     }
-   if (document.ProfileForm.PhoneNo.value.length >13){
+   if (document.ProfileForm.PhoneNumber.value.length >13){
     alert("Phone Number must be in XXX-XXX-XXXX format and cannot be greater than 13 Characters!");
-    document.ProfileForm.PhoneNo.focus();
+    document.ProfileForm.PhoneNumber.focus();
     }
   else if (document.ProfileForm.Email.value.length >30){
     alert("Email must not be greater than 30 characters");
@@ -109,52 +114,53 @@ function validateForm() {
   }
   }
 </script>
+</script>
+
 </head>
 
 <body>
  <img src="https://cdn.discordapp.com/attachments/692467198655987833/804975854101725224/Picture1-removebg-preview.png" alt="Avatar" width="247" height="300">
- 
-<form name="ProfileForm" action="ProfileServlet" method = "post">
+
+<form action="ProfyleServlet" method = "post">
     
-    <%  session = request.getSession();
-         Customer c1 = (Customer)(session.getAttribute("customer"));
+        <%  session = request.getSession();
+         HayrDresser h1 = (HayrDresser)(session.getAttribute("HairDresser"));
         %>
     
     
   <div class="container">
-    <h1>Customer Profile</h1>
+    <h1>Hairdresser Profile</h1>
     <hr>
 
-    <label for="CustID"><b>Customer ID Number</b></label>
-    <input type="text"  placeholder="Your CustID" name="CustID" value="<%= c1.getCustID() %>" onChange="validateForm()" disabled>
+    <label for="HairdresserID"><b>HairDresser ID Number</b></label>
+    <input type="text"  placeholder="Your HairdresserID" name="HairdresserID" value="<%= h1.getHayrdresserId() %>" disabled>
     
-    <label for="FirstName"><b>First Name</b></label>
-    <input type="text" placeholder="Your FirstName" name="FirstName" value="<%= c1.getFirstName()%> " onChange="validateForm()" >
+    <label for="Username"><b>Username</b></label>
+    <input type="text" placeholder="Your Username" name="Username" value="<%= h1.getHayrdresserUser() %> " disabled>
     
-    <label for="LastName"><b>Last Name</b></label>
-    <input type="text" placeholder="Your LastName" name="LastName" value="<%= c1.getLastName()%> " onChange="validateForm()" >
+    <label for="Password"><b>Password</b></label>
+    <input type="text" placeholder="Your Password" name="Password" value="<%= h1.getHayrdresserPw() %> " >
+    
+    <label for="First Name"><b>First Name</b></label>
+    <input type="text" placeholder="Your First Name" name="FirstName" value="<%= h1.getHayrdresserFname() %>"> 
+   
+    <label for="Last Name"><b>Last Name</b></label>
+    <input type="text" placeholder="Your Last Name" name="LastName" value="<%= h1.getHayrdresserLname() %>">
     
     <label for="Address"><b>Address</b></label>
-    <input type="text" placeholder="Your Address" name="Address" value="<%= c1.getAddress() %>" onChange="validateForm()"> 
-   
-    <label for="PhoneNo"><b>Phone Number</b></label>
-    <input type="text" placeholder="Your PhoneNo" name="PhoneNo" value="<%= c1.getPhoneNo() %>" onChange="validateForm()">
+    <input type="text" placeholder="Your Address" name="Address" value="<%= h1.getHayrdresserAddress() %>">
+    
+    <label for="Phone Number"><b>Phone Number</b></label>
+    <input type="text" placeholder="Your Phone Number" name="PhoneNumber" value="<%= h1.getHayrdresserPhone() %>">
     
     <label for="Email"><b>Email</b></label>
-    <input type="text" placeholder="Your Email" name="Email" value="<%= c1.getEmail() %>" onChange="validateForm()">
-    
-    <label for="CUser"><b>Username</b></label>
-    <input type="text" placeholder="Your Username" name="CUser" id="CUser" value="<%= c1.getCUser() %>" disabled>
-    
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Your Password" name="psw" value="<%= c1.getCPass() %>" onChange="validateForm()" >
+    <input type="text" placeholder="Your Email" name="Email" value="<%= h1.getHayrdresserEmail() %>">
 
         <hr>
     <input type="submit" name="Update" value="Update">
-    <button onclick="location.href='HomeLogin.jsp'" type="button">Back</button>
+    <button onclick="location.href='employee.jsp'" type="button">Back</button>
+
   </div>
-
 </form> 
-
 </body>
 </html>

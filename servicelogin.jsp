@@ -1,10 +1,3 @@
-<%-- 
-    Document   : servicelogin
-    Created on : Apr 28, 2021, 10:16:57 PM
-    Author     : kimmy
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -13,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="StyleSheets/service.css">
 </head>
 
 
 <header>
     <div class="container">
-      <a href="HomePage.jsp"><img src="https://raw.githubusercontent.com/Lead-Force/HairSalon/FE/Resources/image.png" alt="logo" class="logo"></a>
+      <a href="HomePage.jsp"><img src="Resources/image.png" alt="logo" class="logo"></a>
 
       <nav>
         <ul>
@@ -27,13 +20,12 @@
           <li><a href="servicelogin.jsp">Services</a></li>
           <li><a href="bookapptlogin.jsp">Book Appointment</a></li>
           <li><a href="DisplayAppts.jsp">Previous Appointment</a></li>
-          
           <li>
 			<div class="dropdown">
 				<button class="dropbtn">Profile</button>
 				<div class="dropdown-content">
 					<a href="customerprofile.jsp">My Profile</a>
-					<a href="THSLogin.jsp">Log Out</a>
+					<a href="HomePage.jsp">Log Out</a>
 				</div>
 			</div>
 		  </li>
@@ -42,13 +34,13 @@
     </div>
 </header>
 
-<body style="overflow:auto; background-image: url('https://cdn.discordapp.com/attachments/804523300302618646/821091755725291571/background.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
+<body style="overflow:auto; background-image: url('Resources/background.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
 
 <div class="container2">
   <div class="item">
 	<h2 style="color:Red;"><u>Hair Services</u></h2>
-		<h5>Women’s Cut &amp; Style<div style="float: right;">$35-$43</div></h5>
-		<h5>Men’s Cut &amp; Style<div style="float: right;">$25-$30</div></h5>
+		<h5>Women?s Cut &amp; Style<div style="float: right;">$35-$43</div></h5>
+		<h5>Men?s Cut &amp; Style<div style="float: right;">$25-$30</div></h5>
 		<h5>Children up to age 11<div style="float: right;">$12</div></h5>
 		<h5>Bang Trim<div style="float: right;">$10</div></h5>
 		<h5>Shampoo &amp; Blow Dry<div style="float: right;">$20-$25</div></h5>
@@ -79,13 +71,13 @@
   &emsp;&emsp;
 
   <div class="item">
-	<img src="https://media.discordapp.net/attachments/804523300302618646/821091814878085130/scissors.png" alt="Scissors & Comb" height="100%" width="100%">
+	<img src="Resources/scissors.png" alt="Scissors & Comb" height="100%" width="100%">
   </div>
 
   &emsp;&emsp;
   
   <div class="item">
-	<img src="https://media.discordapp.net/attachments/804523300302618646/821091849623830538/wax.png" alt="Wax" height="60%" width="100%" style="padding-top: 90px;">
+	<img src="Resources/wax.png" alt="Wax" height="60%" width="100%" style="padding-top: 90px;">
   </div>
   
   &emsp;&emsp;
@@ -131,7 +123,7 @@
   <br><br><br>
   <br><br>
   
-  <img src="https://media.discordapp.net/attachments/804523300302618646/821091782720487504/face.png" alt="Make-Up" height="30%" width="100%">
+  <img src="Resources/makeup.jpg" alt="Make-Up" height="30%" width="100%">
   </div>
   
 </div>
@@ -168,7 +160,7 @@
 							<span class="label" title="Monday">Mon</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -178,7 +170,7 @@
 							<span class="label" title="Tuesday">Tue</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -188,7 +180,7 @@
 							<span class="label" title="Wednesday">Wed</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -198,7 +190,7 @@
 							<span class="label" title="Thursday">Thu</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -208,7 +200,7 @@
 							<span class="label" title="Friday">Fri</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -218,7 +210,7 @@
 							<span class="label" title="Saturday">Sat</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="10:00:00">10:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -228,7 +220,7 @@
 							<span class="label" title="Sunday" style="color:red;">Sun</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="10:00:00">10:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -243,9 +235,9 @@
 		<section class="social" style="margin: 0;">
 			<h4>Social Media</h4>
 			<ul class="social-icons">
-				<li><a href=""> <img src="https://media.discordapp.net/attachments/804523300302618646/821091772071149568/facebook.JPG" height="35" width="40" style="border-radius: 13%;"></img></a></li>
-				<li><a href=""> <img src="https://cdn.discordapp.com/attachments/804523300302618646/821091849678749706/twitter.png" height="45" width="75" style="border-radius: 8%;"></img></a></li>
-				<li><a href=""> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png" height="35" width="40" style="border-radius: 13%;"></img></a></li>
+				<li><a href=""> <img src="Resources/facebook.JPG" height="35" width="40" style="border-radius: 13%;"></img></a></li>
+				<li><a href=""> <img src="Resources/twitter.png" height="45" width="75" style="border-radius: 8%;"></img></a></li>
+				<li><a href=""> <img src="Resources/Instagram.jpg" height="35" width="40" style="border-radius: 13%;"></img></a></li>
 			</ul>
 		</section>
 

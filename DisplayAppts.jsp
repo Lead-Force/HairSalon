@@ -3,9 +3,9 @@
     Created on : Mar 29, 2021, 10:12:00 PM
     Author     : kimmy
 --%>
-<%@page import="business.Customer"%>
-<%@page import="business.Appointment"%>
-<%@page import="business.AppointmentList"%>
+<%@page import="BO.Customer"%>
+<%@page import="BO.Appointment"%>
+<%@page import="BO.AppointmentList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,21 +42,23 @@ function goBack() {
       <%
             javax.servlet.http.HttpSession httpSession = request.getSession();
                   
-            Customer c1 = (Customer)(httpSession.getAttribute("customer"));
+            Customer c1 = (Customer)(httpSession.getAttribute("customer")); out.println(c1.getCustID());
             Appointment da1= (Appointment)httpSession.getAttribute("a1");
+            if(da1!=null){
+                c1.alist.removeAppointment(da1);
+            }
             c1.alist.displayList();
-            c1.alist.removeAppointment(da1);
             //create accountList array 
                 AppointmentList bList = new AppointmentList();
                 //equate this new array to the customer's array list
-                bList = c1.alist;
+                bList = c1.alist; out.println(c1.alist.count);
                 //get the new array's size and store it
                 int listSize = bList.getCount();
                 //out.println(listSize);
                 Appointment[]a1 = new Appointment[listSize];
                
                 a1= bList.apptArr;
-                
+               
       %>  
     
       <form name="DeleteForm" action ="DeleteServlet" method="post">
@@ -75,7 +77,7 @@ function goBack() {
                 <th>Reserved</th>
                 <th>Delete</th>
             </tr>
-            <% for(int i=0; i < listSize; i++) { %>
+            <%  for(int i=0; i < listSize; i++) { %>
             
             <tr>
                

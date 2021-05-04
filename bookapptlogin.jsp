@@ -4,15 +4,15 @@
     Author     : kimmy
 --%>
 
-<%@page import="business.Customer"%>
-<%@page import="business.AppointmentList"%>
-<%@page import="business.Appointment"%>
+<%@page import="BO.Customer"%>
+<%@page import="BO.AppointmentList"%>
+<%@page import="BO.Appointment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ListIterator"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="business.Strings"%>
+<%@page import="BO.Strings"%>
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -23,12 +23,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="StyleSheets/HomePage.css">
 <style>
 #button1{
 width: 200px;
 height: 30px;
-
 }
 #button2{
 width: 200px;
@@ -58,30 +57,23 @@ height: 30px;
         //more properties
         Appointment ia2 = (Appointment) session.getAttribute("ia1");
         String ia3 = null;
-
         //populate the list
         table = Appointment.getAllAppointment();
-
         //listsize
         int listSize = Appointment.getAppointmentCount();
-
         List<Appointment> defaults = new ArrayList<Appointment>();
-
         Appointment def0 = new Appointment("01","9 AM", customerId,  false, week, day, service, "A");
         Appointment def1 = new Appointment("02","11 AM", customerId,  false, week, day, service, "B");
         Appointment def2 = new Appointment("03","3 PM", customerId,  false, week, day, service, "C");
         Appointment def3 = new Appointment("04","4 PM", customerId, false, week, day, service, "D");
         Appointment def4 = new Appointment("05","5 PM", customerId, false, week, day, service, "E");
-
         defaults.add(def0);
         defaults.add(def1);
         defaults.add(def2);
         defaults.add(def3);
         defaults.add(def4);
-
         int dSize = defaults.size();
         int counter = 5;
-
         for (int index = 0; index < listSize; index++) {
             table2.add(table.get(index));             
             System.out.println(" Table1"+table.get(index).getHdAptID()+ " Table2"+table.get(index).getHdAptID());
@@ -101,7 +93,7 @@ for (ListIterator<Appointment> iterator = table2.listIterator(); iterator.hasNex
                             g = ia2.getReserved();
                             System.out.println(" ia2's G:" + g);
                             iterator.remove();
-                            //out.println("Your appointment at: "+ ia2.getAptTime()+ " was successfully booked"+ " on "+ ia2.getAptDays()+", "+ia2.getWeek());
+                            out.println("Your appointment at: "+ ia2.getAptTime()+ " was successfully booked"+ " on "+ ia2.getAptDays()+", "+ia2.getWeek());
                             ia2 = null;
                         }
                         //remove 
@@ -110,7 +102,6 @@ for (ListIterator<Appointment> iterator = table2.listIterator(); iterator.hasNex
                             iterator2.remove();
                         }
                     }}}
-
         Appointment[] apptArray = new Appointment[5];
         for (int sCount = 0; sCount < defaults.size(); sCount++) {
                 apptArray[sCount] = defaults.get(sCount);
@@ -134,7 +125,7 @@ for (ListIterator<Appointment> iterator = table2.listIterator(); iterator.hasNex
 				<button class="dropbtn">Profile</button>
 				<div class="dropdown-content">
 					<a href="customerprofile.jsp">My Profile</a>
-					<a href="THSLogin.jsp">Log Out</a>
+					<a href="HomePage.jsp">Log Out</a>
 				</div>
 			</div>
 		  </li>

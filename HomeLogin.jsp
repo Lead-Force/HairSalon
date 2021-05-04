@@ -1,10 +1,3 @@
-<%-- 
-    Document   : HomeLogin
-    Created on : Apr 28, 2021, 10:12:08 PM
-    Author     : kimmy
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -13,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="StyleSheets/HomePage.css">
 </head>
-
-
+   
+</form>
 <header>
     <div class="container">
-      <a href="HomePage.jsp"><img src="https://raw.githubusercontent.com/Lead-Force/HairSalon/FE/Resources/image.png" alt="logo" class="logo"></a>
+      <a href="HomePage.jsp"><img src="Resources/image.png" alt="logo" class="logo"></a>
 
       <nav>
         <ul>
@@ -32,7 +25,7 @@
 				<button class="dropbtn">Profile</button>
 				<div class="dropdown-content">
 					<a href="customerprofile.jsp">My Profile</a>
-					<a href="THSLogin.jsp">Log Out</a>
+					<a href="HomePage.jsp">Log Out</a>
 				</div>
 			</div>
 		  </li>
@@ -41,7 +34,7 @@
     </div>
 </header>
 
-<body>
+<body style="overflow:auto;">
 
 <div class="container1" id="home">
   <div class="content">
@@ -50,13 +43,13 @@
   <h3 style="text-align:center; color:#990000;">
   Welcome to The Hair Salon, the premier hair and make-up salon in Kennesaw, GA.</h3>
   <h5>Step into our salon and experience the most contemporary hair cutting, coloring, and designing techniques in demand today.
-  Our talented team of devoted stylist has dedicated their time by continuing their education to ensure you have the latest up to date style.
+  Our talented team of devoted stylists has dedicated their time by continuing their education to ensure you have the latest up to date style.
   Come in and enjoy the most modern salon.
   </h5>
   
   &nbsp;
   
-  <img src="https://media.discordapp.net/attachments/804523300302618646/821091765963980810/beuhair_interior.jpg?width=1692&height=781" style="width: 100%; height: 100%;" align="right"></img>
+  <img src="https://media.discordapp.net/attachments/804523300302618646/821091765963980810/beuhair_interior.jpg?width=1362&height=629" style="width: 100%; height: 100%;" align="right"></img>
   
   <br><br><br><br>
   <br><br><br><br>
@@ -76,14 +69,14 @@
 	  <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 	  <h2 style="text-align:center; color:#990000">Testimonials</h2>
 
-	  <h6 style="text-align:center; margin: 0;"><b>“For years, I was looking for the perfect salon. THS exceeded my expectations and I’ve already scheduled my next appointment.”</b></h6>
-	  <h6 style="text-align:center; margin: 0; padding-top: 15px;"><b>– Charlotte</b></h6>
+	  <h6 style="text-align:center; margin: 0;"><b>For years, I was looking for the perfect salon. THS exceeded my expectations and I've already scheduled my next appointment.</b></h6>
+	  <h6 style="text-align:center; margin: 0; padding-top: 15px;"><b>- Charlotte</b></h6>
 
-	  <h6 style="text-align:center; margin: 0;  padding-top: 30px;"><b>“All of them are the best. I always walk out of the salon feeling like a million dollars.”</b></h6>
-	  <h6 style="text-align:center; margin: 0;  padding-top: 10px;"><b>– Brielle</b></h6>
+	  <h6 style="text-align:center; margin: 0;  padding-top: 30px;"><b>All of them are the best. I always walk out of the salon feeling like a million dollars.</b></h6>
+	  <h6 style="text-align:center; margin: 0;  padding-top: 10px;"><b>- Brielle</b></h6>
 
-	  <h6 style="text-align:center; margin: 0;  padding-top: 30px;"><b>“My friend referred me to THS and I am so happy I decided to give it a try. My hair looks amazing and the manicure was excellent.”</b></h6>
-	  <h6 style="text-align:center; margin: 0;  padding-top: 10px;"><b>– Chris</b></h6>
+	  <h6 style="text-align:center; margin: 0;  padding-top: 30px;"><b>My friend referred me to THS and I am so happy I decided to give it a try. My hair looks amazing and the manicure was excellent.</b></h6>
+	  <h6 style="text-align:center; margin: 0;  padding-top: 10px;"><b>- Chris</b></h6>
 	  </div>
   
   </div>
@@ -91,9 +84,10 @@
 </div>
 
 <br>
+<br>
 
 <footer class="page-footer page-footer-default">
-	<div class="content">
+	<div class="content" >
 		<section class="location" style="margin: 0;">
 			<div class="address">
 				<h4 class="name" itemprop="name">The Hair Salon (THS)</h4>
@@ -122,7 +116,7 @@
 							<span class="label" title="Monday">Mon</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -132,7 +126,7 @@
 							<span class="label" title="Tuesday">Tue</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -142,7 +136,7 @@
 							<span class="label" title="Wednesday">Wed</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -152,7 +146,7 @@
 							<span class="label" title="Thursday">Thu</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -162,7 +156,7 @@
 							<span class="label" title="Friday">Fri</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="09:00:00">9:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -172,7 +166,7 @@
 							<span class="label" title="Saturday">Sat</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="10:00:00">10:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -182,7 +176,7 @@
 							<span class="label" title="Sunday" style="color:red;">Sun</span>
 							<span class="time">
 								<time class="start" itemprop="opens" content="10:00:00">10:00 AM</time>
-								<span class="sep">–</span>
+								<span class="sep">?</span>
 								<time class="end" itemprop="closes" content="18:00:00">6:00 PM</time>
 							</span>
 						</div>
@@ -197,9 +191,9 @@
 		<section class="social" style="margin: 0;">
 			<h4>Social Media</h4>
 			<ul class="social-icons">
-				<li><a href=""> <img src="https://media.discordapp.net/attachments/804523300302618646/821091772071149568/facebook.JPG" height="35" width="40" style="border-radius: 13%;"></img></a></li>
-				<li><a href=""> <img src="https://cdn.discordapp.com/attachments/804523300302618646/821091849678749706/twitter.png" height="45" width="75" style="border-radius: 8%;"></img></a></li>
-				<li><a href=""> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png" height="35" width="40" style="border-radius: 13%;"></img></a></li>
+				<li><a href=""> <img src="Resources/facebook.JPG" height="35" width="40" style="border-radius: 13%;"></img></a></li>
+				<li><a href=""> <img src="Resources/twitter.png" height="45" width="75" style="border-radius: 8%;"></img></a></li>
+				<li><a href=""> <img src="Resources/Instagram.jpg" height="35" width="40" style="border-radius: 13%;"></img></a></li>
 			</ul>
 		</section>
 

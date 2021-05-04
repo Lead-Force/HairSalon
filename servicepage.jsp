@@ -1,7 +1,7 @@
 <%-- 
-    Document   : servicepage
-    Created on : Apr 27, 2021, 9:46:27 PM
-    Author     : kimmy
+    Document   : services
+    Created on : Apr 12, 2021, 10:18:13 AM
+    Author     : krism
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,36 +13,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="StyleSheets/HomePage.css">
 </head>
 
 
 <header>
     <div class="container">
-      <a href="HomePage.jsp"><img src="https://raw.githubusercontent.com/Lead-Force/HairSalon/FE/Resources/image.png" alt="logo" class="logo"></a>
+      <a href="HomePage.jsp"><img src="Resources/image.png" alt="logo" class="logo"></a>
 
-      <nav>
+      <center>
+	  <nav>
         <ul>
           <li><a href="HomePage.jsp">Home</a></li>
           <li><a href="servicepage.jsp">Services</a></li>
           <li><a href="bookappt.jsp">Book Appointment</a></li>
-          
           <li>
 			<div class="dropdown">
 				<button class="dropbtn">Login</button>
 				<div class="dropdown-content">
-					<a href="THSLogin.jsp">Customer</a>
-					<a href="Employee/employeelogin.html">Employee</a>
-					<a href="Admin/adminlogin.html">Admin</a>
+					<a href="CustomerLogin.jsp">Customer</a>
+					<a href="HdLogin.jsp">Employee</a>
+					<a href="adminlogin.jsp">Admin</a>
 				</div>
 			</div>
 		  </li>
 		</ul>
       </nav>
+      </center>
     </div>
 </header>
 
-<body style="overflow:auto; background-image: url('https://cdn.discordapp.com/attachments/804523300302618646/821091755725291571/background.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
+<body style="overflow:auto; background-image: url('Resources/background.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
 
 <div class="container2">
   <div class="item">
@@ -79,13 +80,13 @@
   &emsp;&emsp;
 
   <div class="item">
-	<img src="https://media.discordapp.net/attachments/804523300302618646/821091814878085130/scissors.png" alt="Scissors & Comb" height="100%" width="100%">
+	<img src="Resources/scissors.png" alt="Scissors & Comb" height="100%" width="100%">
   </div>
 
   &emsp;&emsp;
   
   <div class="item">
-	<img src="https://media.discordapp.net/attachments/804523300302618646/821091849623830538/wax.png" alt="Wax" height="60%" width="100%" style="padding-top: 90px;">
+	<img src="Resources/wax.png" alt="Wax" height="60%" width="100%" style="padding-top: 90px;">
   </div>
   
   &emsp;&emsp;
@@ -131,7 +132,7 @@
   <br><br><br>
   <br><br>
   
-  <img src="https://media.discordapp.net/attachments/804523300302618646/821091782720487504/face.png" alt="Make-Up" height="30%" width="100%">
+  <img src="Resources/makeup.jpg" alt="Make-Up" height="30%" width="100%">
   </div>
   
 </div>
@@ -243,9 +244,9 @@
 		<section class="social" style="margin: 0;">
 			<h4>Social Media</h4>
 			<ul class="social-icons">
-				<li><a href=""> <img src="https://media.discordapp.net/attachments/804523300302618646/821091772071149568/facebook.JPG" height="35" width="40" style="border-radius: 13%;"></img></a></li>
-				<li><a href=""> <img src="https://cdn.discordapp.com/attachments/804523300302618646/821091849678749706/twitter.png" height="45" width="75" style="border-radius: 8%;"></img></a></li>
-				<li><a href=""> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png" height="35" width="40" style="border-radius: 13%;"></img></a></li>
+				<li><a href=""> <img src="Resources/facebook.JPG" height="35" width="40" style="border-radius: 13%;"></img></a></li>
+				<li><a href=""> <img src="Resources/twitter.png" height="45" width="75" style="border-radius: 8%;"></img></a></li>
+				<li><a href=""> <img src="Resources/Instagram.jpg" height="35" width="40" style="border-radius: 13%;"></img></a></li>
 			</ul>
 		</section>
 

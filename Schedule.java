@@ -74,8 +74,9 @@ public class Schedule {
         //s1.displaySchedule();
     }
 
-    //DB*****************************************************************
-    //UpdateDB&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+ /****************************************
+     * Method to update schedule from the database
+     * *************************************/
     public void updateDB() {
         try {
             Class.forName(Strings.driver);
@@ -105,8 +106,9 @@ public class Schedule {
         }
 
     }
-    //selectDB*************************************************************
-
+     /****************************************
+     * Method to select schedule from the database
+     * *************************************/
     public void selectDB(String i) {
         EmpId = i;
         try {    //Load DB Driver
@@ -137,8 +139,9 @@ public class Schedule {
             System.out.println(se);
         }
     } //end selectDB()
-
-    //insertDB******************************************************************
+   /****************************************
+     * Method to insert schedule into the database
+     * *************************************/
     public void insertDB(String id, String fn, String ln/*, 
                 String to, boolean m,boolean t, boolean w, boolean r, boolean f,
                 boolean s, boolean z*/) {
@@ -195,8 +198,9 @@ public class Schedule {
             System.out.println(e1);
         }
     }
-    //DeleteDB***********************************************************
-
+   /****************************************
+     * Method to delete schedule from the database
+     * *************************************/
     public void deleteDB() {
         try {
             Class.forName(Strings.driver);
@@ -221,8 +225,9 @@ public class Schedule {
             System.out.println(e1);
         }
     }
-
-    //This is a static arrayList that gets hairdressers from getallhairdressers method
+   /****************************************
+     * Static arraylist that gets schedules from the database
+     * *************************************/
     public static ArrayList<Schedule> getAllSchedules() throws ClassNotFoundException, SQLException {
         try {
 //Load DB Driver
@@ -256,8 +261,9 @@ public class Schedule {
         }
         return scheduleList;
     }
-    //DB method to count the number of records in the
-
+     /****************************************
+     * Method to get schedules count
+     * *************************************/
     public static int getScheduleCount() {
         try {
             //Load DB Driver
@@ -281,26 +287,7 @@ public class Schedule {
         return rawScheduleDBCount;
     }
 
-    //createTbDB
-    public void createTableDB() {
-        try {    //Load DB Driver
-            Class.forName(Strings.driver);
-            Connection c1 = DriverManager.getConnection(Strings.url);
-            //Execute SQL StAtement
-            Statement stmt = c1.createStatement();
-            String sql = "CREATE TABLE SCHEDULE"
-                    + "(EmpID INTEGER not NULL, "
-                    + " FirstName VARCHAR(255), "
-                    + " LastName VARCHAR(255), "
-                    + " M BIT(1), "
-                    + " PRIMARY KEY ( EmpID ))";
-
-            stmt.executeUpdate(sql);
-            System.out.println("Created table in given database...");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+    
 
     //END DB*************************************************************
     //display method
